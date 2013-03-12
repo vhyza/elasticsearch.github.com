@@ -23,7 +23,7 @@ search.response.hits.each {SearchHit hit ->
 }
 </pre>
 
-p. It can also be execute using the "Java API" while still using a closure for the query:
+p. It can also be executed using the "Java API" while still using a closure for the query:
 
 <pre class="prettyprint">
 def search = node.client.prepareSearch("test").setQuery({
@@ -36,4 +36,72 @@ search.response.hits.each {SearchHit hit ->
 </pre>
 
 p. The format of the search @Closure@ follows the same JSON syntax as the "Search API":/guide/reference/api/search/ request.
+
+h1. More examples
+
+p. Term query where multiple values are provided (see "terms":/guide/reference/query-dsl/terms-query.html):
+
+<pre class="prettyprint">
+def search = node.client.search {
+    indices "test"
+    types "type1"
+    source {
+        query {
+            terms(test: ["value1", "value2"])
+        }
+    }
+}
+</pre>
+
+
+p. Query string (see "query string":/guide/reference/query-dsl/query-string-query.html):
+
+<pre class="prettyprint">
+def search = node.client.search {
+    indices "test"
+    types "type1"
+    source {
+        query {
+            query_string(
+                fields: ["test"],
+                query: "value1 value2")
+        }
+    }
+}
+</pre>
+
+
+p. Pagination (see "from/size":/guide/reference/api/search/from-size.html):
+
+<pre class="prettyprint">
+def search = node.client.search {
+    indices "test"
+    types "type1"
+    source {
+        from = 0
+        size = 10
+        query {
+            term(test: "value")
+        }
+    }
+}
+</pre>
+
+
+p. Sorting (see "sort":/guide/reference/api/search/sort.html):
+
+<pre class="prettyprint">
+def search = node.client.search {
+    indices "test"
+    types "type1"
+    source {
+        query {
+            term(test: "value")
+        }
+        sort = [
+            date : [ order: "desc"]
+        ]
+    }
+}
+</pre>
 
