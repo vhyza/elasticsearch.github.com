@@ -68,9 +68,10 @@ h3. EventMachine
 
 * "em-elasticsearch":http://github.com/vangberg/em-elasticsearch: elasticsearch library for eventmachine.
 
-h3. Linux Command Line
+h3. Command Line
 
-* "es2unix":https://github.com/elasticsearch/es2unix: Elasticsearch API consumable by the command line.
+* "es2unix":https://github.com/elasticsearch/es2unix: Elasticsearch API consumable by the Linux command line.
+* "elasticshell":https://github.com/javanna/elasticshell: command line shell for elasticsearch.
 
 h3. OCaml
 
