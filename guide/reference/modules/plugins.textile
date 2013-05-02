@@ -87,6 +87,7 @@ h2. River Plugins
 * "ActiveMQ River Plugin":https://github.com/domdorn/elasticsearch-river-activemq/ (by Dominik Dorn)
 * "Solr River Plugin":https://github.com/javanna/elasticsearch-river-solr/ (by Luca Cavanna)
 * "CSV River Plugin":https://github.com/xxBedy/elasticsearch-river-csv (by Martin Bednar)
+* "JMS River Plugin":https://github.com/qotho/elasticsearch-river-jms (by Steve Sarandos)
 
 h2. Transport Plugins
 
