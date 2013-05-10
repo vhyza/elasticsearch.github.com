@@ -117,6 +117,7 @@ h2. Health and Performance Monitoring
 
 * "bigdesk":https://github.com/lukas-vlcek/bigdesk: Live charts and statistics for elasticsearch cluster.
 * "paramedic":https://github.com/karmi/elasticsearch-paramedic: Live charts with cluster stats and indices/shards information.
+* "ElasticSearchHQ":http://www.elastichq.org/: Free cluster health monitoring tool
 * "SPM for ElasticSearch":http://sematext.com/spm/index.html: Performance monitoring with live charts showing cluster and node stats, integrated alerts, email reports, etc.
 * "check-es":https://github.com/radu-gheorghe/check-es: Nagios/Shinken plugins for checking on elasticsearch
 * "check_elasticsearch":https://github.com/anchor/nagios-plugin-elasticsearch: An ElasticSearch availability and performance monitoring plugin for Nagios.
