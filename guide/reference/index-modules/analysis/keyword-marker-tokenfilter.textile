@@ -17,11 +17,12 @@ p. Here is an example:
 <pre class="prettyprint">
 index :
     analysis :
-        analyzer :·
+        analyzer :
             myAnalyzer :
                 type : custom
                 tokenizer : standard
                 filter : [lowercase, protwods, porterStem]    
-            protwods:
-                type: keyword_marker
+        filter :
+            protwods :
+                type : keyword_marker
                 keywords_path : analysis/protwords.txt
