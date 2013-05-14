@@ -53,7 +53,7 @@ There is a specific list of settings that can be updated, those include:
 * @cluster.routing.allocation.require.*@ (from 0.90)
 * @indices.cache.filter.size@
 * @indices.ttl.interval@
-* @indices.recovery.file_chunk_size@, @indices.recovery.translog_ops@, @indices.recovery.translog_size@, @indices.recovery.compress@, @indices.recovery.concurrent_streams@, @indices.recovery.max_size_per_sec@.
+* @indices.recovery.file_chunk_size@, @indices.recovery.translog_ops@, @indices.recovery.translog_size@, @indices.recovery.compress@, @indices.recovery.concurrent_streams@, @indices.recovery.max_bytes_per_sec@ (since 0.90.1) / @indices.recovery.max_size_per_sec@ (pre 0.90.1).
 
 p. Logger values can also be updated by setting @logger.@ prefix. More settings will be allowed to be updated.
 
