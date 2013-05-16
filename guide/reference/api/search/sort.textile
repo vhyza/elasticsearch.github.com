@@ -49,9 +49,9 @@ p. From version @0.90.0.Beta1@ Elasticsearch supports sorting by array fields wh
 * @sum@ - Use the sum of all values as sort value. Only applicable for number based array fields.
 * @avg@ - Use the average of all values as sort value. Only applicable for number based array fields.
 
-h3. Sore mode example usage
+h3. Score mode example usage
 
-p. In the example bellow the field price has multiple prices per document. In this case the result hits will be sort by price ascending based on the average price per document.
+p. In the example below the field price has multiple prices per document. In this case the result hits will be sort by price ascending based on the average price per document.
 
 <pre class="prettyprint lang-js">
 curl -XPOST 'localhost:9200/_search' -d '{
