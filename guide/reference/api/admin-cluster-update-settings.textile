@@ -26,7 +26,7 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
 }'
 </pre>
 
-.p The cluster responds with the settings updated. So the response for the last example will be:
+p. The cluster responds with the settings updated. So the response for the last example will be:
 
 <pre class="prettyprint">
 {
