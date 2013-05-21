@@ -50,7 +50,7 @@ p. Another option which is a bit more DSL enabled is to provide the ranges on th
 }
 </pre>
 
-p. The @range@ facet always include the @from@ parameter and exclude the @to@ parameter for each range.
+p. The @range@ facet always includes the @from@ parameter and excludes the @to@ parameter for each range.
 
 h1. Key and Value
 
