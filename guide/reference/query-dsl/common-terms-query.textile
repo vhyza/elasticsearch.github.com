@@ -1,0 +1,72 @@
+---
+layout: guide
+title: Common Terms Query
+cat: guide
+sidebar: reference_query_dsl
+---
+
+p. The @common@ query is a query that executes high-frequency terms in an optional sub-query to prevent slow queries due to "common" terms like stopwords. A typical scenario for common terms is an @OR@ combination (disjunction) of query terms entered in a fulltext search field. A user entered query like _"to be or not to be"_ parsed into a disjunction query will very likely hit a large amount of documents even if a document only contains a single term out of the entire query. Yet, the  @minimum_should_match@ parameter can help to speed this query up but without any further statistical information the query will still retrieve and score large amounts of doucments causing relativly slow queries. One option to overcome these problem is to filter stopwords with a @stop@ filter but that will cause a query like _"to be or not to be"_ to return no documents at all. 
+
+The @common@ query provides a semi-smart solution to this problems classifying terms into high-frequent and low-frequent terms. For each of the two classes a single query is executed while the high-frequent terms query is only executed for documents that match the low-frequent query. If the query is composed of high-frequent terms only the entire query will be exectued as an @AND@ (conjunction) query retrieving only documents that contain all of the query terms. A term is considered high-frequent if it's document frequency is @>@ the @cutoff_frequency@ which can be specified as an absolute frequency @>=1.0@ or as a relative frequency @[0..1)@.
+
+Maybe the most interesting property of the this query is it's dynamic nature of adapting to domain specific stopwords automatically for example detecting terms like _"clip"_ or _"video"_ as a stopword on video portal without manually editing and updateing a list of terms that will never be exhaustive.
+
+p. An example where low-frequent terms are executed as a boolean @AND@ query:
+
+<pre class="prettyprint lang-js">
+{
+    "common" : {
+        "body" : {
+            "query" : "this is bonsai cool",
+            "high_freq_operator" : "OR",
+            "low_freq_operator" : "AND",
+            "cutoff_frequency" : 0.001
+        }
+    }
+}
+</pre>
+
+p. A user might enter a query like _"elly the elephant as cartoon"_, to a human it's pretty obvious that _"as"_ and _"the"_ aren't sigifinact to render a document as relevant:
+
+<pre class="prettyprint lang-js">
+{
+    "common" : {
+        "body" : {
+            "query" : "elly the elephant as cartoon",
+            "low_freq_operator" : "AND",
+            "high_freq_operator" : "OR",
+            "minimum_should_match" : "2",
+            "cutoff_frequency" : 0.001
+        }
+    }
+}
+</pre>
+
+The query above is, depending on the index, is roughly equivalent to this boolean query:
+
+<pre class="prettyprint lang-js">
+{
+  "bool" : {
+    "must" : {
+      "bool" : {
+        "should" : [ 
+          { "term" : { "body" : "elly" }},
+          { "term" : { "body" : "elephant" }},
+          { "term" : { "body" : "cartoon" }}
+        ],
+        "minimum_should_match" : "2"
+      }
+    },
+    "should" : {
+      "bool" : {
+        "must" : [ 
+          { "term" : { "body" : "the" }},
+          { "term" : { "body" : "as" }}
+        ]
+      }
+    }
+  }
+}
+</pre>
+
+Which matches likely has a much better execution time compared to a query that matches each doc that contains the terms _"as"_ and _"the"_ and a the same time improves retrieval performance with more relevant documents. Yet, the scores might be very similar since the high-frequent terms are still scored if the low-frequent terms match. Note that the @minimum_must_match@ parameter is applied to the low-frequent terms query only. The @common@ query also allow a query analyzer to be specified with the @analyzer@ attribute, if not set the default query analyzer for the field is used.
