@@ -5,68 +5,116 @@ cat: guide
 sidebar: reference_query_dsl
 ---
 
-p. The @common@ query is a query that executes high-frequency terms in an optional sub-query to prevent slow queries due to "common" terms like stopwords. A typical scenario for common terms is an @OR@ combination (disjunction) of query terms entered in a fulltext search field. A user entered query like _"to be or not to be"_ parsed into a disjunction query will very likely hit a large amount of documents even if a document only contains a single term out of the entire query. Yet, the  @minimum_should_match@ parameter can help to speed this query up but without any further statistical information the query will still retrieve and score large amounts of doucments causing relativly slow queries. One option to overcome these problem is to filter stopwords with a @stop@ filter but that will cause a query like _"to be or not to be"_ to return no documents at all. 
+p. The @common@ terms query is a modern alternative to stopwords which improves the precision and recall of search results (by taking stopwords into account), without sacrificing performance.
 
-The @common@ query provides a semi-smart solution to this problems classifying terms into high-frequent and low-frequent terms. For each of the two classes a single query is executed while the high-frequent terms query is only executed for documents that match the low-frequent query. If the query is composed of high-frequent terms only the entire query will be exectued as an @AND@ (conjunction) query retrieving only documents that contain all of the query terms. A term is considered high-frequent if it's document frequency is @>@ the @cutoff_frequency@ which can be specified as an absolute frequency @>=1.0@ or as a relative frequency @[0..1)@.
+h2. The problem
 
-Maybe the most interesting property of the this query is it's dynamic nature of adapting to domain specific stopwords automatically for example detecting terms like _"clip"_ or _"video"_ as a stopword on video portal without manually editing and updateing a list of terms that will never be exhaustive.
+p. Every term in a query has a cost.  A search for @"The brown fox"@ requires three term queries, one for each of @"the"@, @"brown"@ and @"fox"@, all of which are executed against all documents in the index. The query for @"the"@ is likely to match many documents and thus has a much smaller impact on relevance than the other two terms. 
 
-p. An example where low-frequent terms are executed as a boolean @AND@ query:
+p. Previously, the solution to this problem was to ignore terms with high frequency. By treating @"the"@ as a _stopword_, we reduce the index size and reduce the number of term queries that need to be executed.
 
-<pre class="prettyprint lang-js">
-{
-    "common" : {
-        "body" : {
-            "query" : "this is bonsai cool",
-            "high_freq_operator" : "OR",
-            "low_freq_operator" : "AND",
-            "cutoff_frequency" : 0.001
-        }
-    }
-}
-</pre>
+p. The problem with this approach is that, while stopwords have a small impact on relevance, they are still important. If we remove stopwords, we lose precision, (eg we are unable to distinguish between @"happy"@ and @"not happy"@) and we lose recall (eg text like @"The The"@ or @"To be or not to be"@ would simply not exist in the index).
 
-p. A user might enter a query like _"elly the elephant as cartoon"_, to a human it's pretty obvious that _"as"_ and _"the"_ aren't sigifinact to render a document as relevant:
+h2. The solution
 
-<pre class="prettyprint lang-js">
-{
-    "common" : {
-        "body" : {
-            "query" : "elly the elephant as cartoon",
-            "low_freq_operator" : "AND",
-            "high_freq_operator" : "OR",
-            "minimum_should_match" : "2",
-            "cutoff_frequency" : 0.001
-        }
-    }
-}
-</pre>
+p. The @common@ terms query divides the query terms into two groups: more important (ie _low frequency_ terms) and less important (ie _high frequency_ terms which would previously have been stopwords). 
 
-The query above is, depending on the index, is roughly equivalent to this boolean query:
+p. First it searches for documents which match the more important terms. These are the terms which appear in fewer documents and have a greater impact on relevance.
+
+p. Then, it executes a second query for the less important terms -- terms which appear frequently and have a low impact on relevance. But instead of calculating the relevance score for *all* matching documents, it only calculates the @_score@ for documents already matched by the first query.  In this way the high frequency terms can improve the relevance calculation without paying the cost of poor performance.
+
+p. If a query consists only of high frequency terms, then a single query is executed as an @AND@ (conjunction) query, in other words all terms are required. Even though each individual term will match many documents, the combination of terms narrows down the resultset to only the most relevant.
+
+p. Terms are allocated to the high or low frequency groups based on the @cutoff_frequency@, which can be specified as an absolute frequency (@>=1@) or as a relative frequency (@0.0 .. 1.0@). 
+
+p. Perhaps the most interesting property of this query is that it adapts to domain specific stopwords automatically. For example, on a video hosting site, common terms like @"clip"@ or @"video"@ will automatically behave as stopwords without the need to maintain a manual list.
+
+h2. Examples
+
+In this example, words that have a document frequency greater than 0.1% (eg @"this"@ and @"is"@) will be treated as _common terms_.
 
 <pre class="prettyprint lang-js">
 {
-  "bool" : {
-    "must" : {
-      "bool" : {
-        "should" : [ 
-          { "term" : { "body" : "elly" }},
-          { "term" : { "body" : "elephant" }},
-          { "term" : { "body" : "cartoon" }}
-        ],
-        "minimum_should_match" : "2"
-      }
-    },
-    "should" : {
-      "bool" : {
-        "must" : [ 
-          { "term" : { "body" : "the" }},
-          { "term" : { "body" : "as" }}
-        ]
-      }
+  "common": {
+    "body": {
+      "query":            "this is bonsai cool",
+      "cutoff_frequency": 0.001
     }
   }
 }
 </pre>
 
-Which matches likely has a much better execution time compared to a query that matches each doc that contains the terms _"as"_ and _"the"_ and a the same time improves retrieval performance with more relevant documents. Yet, the scores might be very similar since the high-frequent terms are still scored if the low-frequent terms match. Note that the @minimum_must_match@ parameter is applied to the low-frequent terms query only. The @common@ query also allow a query analyzer to be specified with the @analyzer@ attribute, if not set the default query analyzer for the field is used.
+The number of terms which should match can be controlled with the @minimum_should_match@, @low_freq_operator@ (default @"or"@) and @high_freq_operator@ (default @"or"@) parameters. 
+
+For low frequency terms, set the @low_freq_operator@ to @"and"@ to make all terms required: 
+
+<pre class="prettyprint lang-js">
+{
+  "common": {
+    "body": {
+      "query":            "nelly the elephant as a cartoon",
+      "cutoff_frequency": 0.001,
+      "low_freq_operator" "and"
+    }
+  }
+}
+</pre>
+
+which is roughly equivalent to:
+
+<pre class="prettyprint lang-js">
+{
+  "bool": {
+    "must": [
+      { "term": { "body": "nelly"}},
+      { "term": { "body": "elephant"}},
+      { "term": { "body": "cartoon"}}
+    ],
+    "should": [
+      { "term": { "body": "the"}}
+      { "term": { "body": "as"}}
+      { "term": { "body": "a"}}
+    ]
+  }
+}
+</pre>
+
+Alternatively use @minimum_should_match@ to specify a minimum number or percentage of low frequency terms which must be present, for instance:
+
+<pre class="prettyprint lang-js">
+{
+  "common": {
+    "body": {
+      "query":                "nelly the elephant as a cartoon",
+      "cutoff_frequency":     0.001,
+      "minimum_should_match": 2
+    }
+  }
+}
+</pre>
+
+which is roughly equivalent to:
+
+<pre class="prettyprint lang-js">
+{
+  "bool": {
+    "must": {
+      "bool": {
+        "should": [
+          { "term": { "body": "nelly"}},
+          { "term": { "body": "elephant"}},
+          { "term": { "body": "cartoon"}}
+        ],
+        "minimum_should_match": 2
+      }
+    },
+    "should": [
+      { "term": { "body": "the"}}
+      { "term": { "body": "as"}}
+      { "term": { "body": "a"}}
+    ]
+  }
+}
+</pre>
+
+The @common@ terms query also supports @boost@, @analyzer@ and @disable_coord@ as parameters.
