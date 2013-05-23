@@ -34,8 +34,8 @@ p. Then the following simple query can be executed with a @geo_bounding_box@ fil
                         "lon" : -74.1
                     },
                     "bottom_right" : {
-                        "lat" : 40.717,
-                        "lon" : -73.99
+                        "lat" : 40.01,
+                        "lon" : -71.12
                     }
                 }
             }
@@ -64,8 +64,8 @@ h2. Lat Lon As Properties
                         "lon" : -74.1
                     },
                     "bottom_right" : {
-                        "lat" : 40.717,
-                        "lon" : -73.99
+                        "lat" : 40.01,
+                        "lon" : -71.12
                     }
                 }
             }
@@ -87,8 +87,8 @@ p. Format in @[lon, lat]@, note, the order of lon/lat here in order to conform w
         "filter" : {
             "geo_bounding_box" : {
                 "pin.location" : {
-                    "top_left" : [40.73, -74.1],
-                    "bottom_right" : [40.717, -73.99]
+                    "top_left" : [-74.1, 40.73],
+                    "bottom_right" : [-71.12, 40.01]
                 }
             }
         }
@@ -110,7 +110,7 @@ p. Format in @lat,lon@.
             "geo_bounding_box" : {
                 "pin.location" : {
                     "top_left" : "40.73, -74.1",
-                    "bottom_right" : "40.717, -73.99"
+                    "bottom_right" : "40.01, -71.12"
                 }
             }
         }
@@ -129,8 +129,8 @@ h2. Geohash
         "filter" : {
             "geo_bounding_box" : {
                 "pin.location" : {
-                    "top_left" : "drm3btev3e86",
-                    "bottom_right" : "drm3btev3e86"
+                    "top_left" : "dr5r9ydj2y73",
+                    "bottom_right" : "drj7teegpus6"
                 }
             }
         }
@@ -164,8 +164,8 @@ p. The type of the bounding box execution by default is set to @memory@, which m
                         "lon" : -74.1
                     },
                     "bottom_right" : {
-                        "lat" : 40.717,
-                        "lon" : -73.99
+                        "lat" : 40.10,
+                        "lon" : -71.12
                     }
                 },
                 "type" : "indexed"
