@@ -156,8 +156,8 @@ h2. Lat Lon as Properties
             "_geo_distance" : {
                 "pin.location" : {
                     "lat" : 40,
-                    "lon", -70
-                }
+                    "lon" : -70
+                },
                 "order" : "asc",
                 "unit" : "km"
             }
