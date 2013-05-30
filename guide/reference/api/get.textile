@@ -57,15 +57,15 @@ curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'
 p. The returned fields will either be loaded if they are stored, or fetched from the @_source@ (parsed and extracted). It also supports sub objects extraction from _source, like @obj1.obj2@.
 
 h1. Getting the _source directly
-Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it..
-The get endpoint has the followig structure: @{index}/{type}/{id}/_source@
+
+p. Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it. The get endpoint has the followig structure: @{index}/{type}/{id}/_source@
 
 Curl example:
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'
 </pre>
 
-Note, there is also a HEAD variant for the new _source endpoint.
+p. Note, there is also a HEAD variant for the new _source endpoint.
 
 h1. Routing
 
