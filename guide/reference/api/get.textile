@@ -58,14 +58,17 @@ p. The returned fields will either be loaded if they are stored, or fetched from
 
 h1. Getting the _source directly
 
-p. Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it. The get endpoint has the followig structure: @{index}/{type}/{id}/_source@
+p. Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it. The get endpoint has the followig structure: @{index}/{type}/{id}/_source@. Curl example:
 
-Curl example:
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'
 </pre>
 
-p. Note, there is also a HEAD variant for the new _source endpoint.
+p. Note, there is also a HEAD variant for the new _source endpoint. Curl example:
+
+<pre class="prettyprint">
+curl -XHEAD 'http://localhost:9200/twitter/tweet/1/_source'
+</pre>
 
 h1. Routing
 
