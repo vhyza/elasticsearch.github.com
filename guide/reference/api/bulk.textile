@@ -19,7 +19,7 @@ optional_source\n
 
 p. *NOTE*: the final line of data must end with a newline character @\n@.
 
-The possible actions are @index@, @create@, @delete@ and since version @0.90.1@ also @update@.  @index@ and @create@ expect a source on the next line, and have the same semantics as the @op_type@ parameter to the standard index API (ie, create will fail if a document with the same index and type exists already).  @delete@ does not expect a source on the following line, and has the same semantics as the standard delete API. @update@ expects that the partial doc, upsert and script and its options
+The possible actions are @index@, @create@, @delete@ and since version @0.90.1@ also @update@.  @index@ and @create@ expect a source on the next line, and have the same semantics as the @op_type@ parameter to the standard index API (ie, create will fail if a document with the same index and type exists already).  @delete@ does not expect a source on the following line, and has the same semantics as the standard delete API. @update@ expects that the partial doc, upsert and script and its options are specfied on the next line.
 
 p. If you're providing text file input to @curl@, you *must* use the @--data-binary@ flag instead of plain @-d@.  The latter doesn't preserve newlines.  Example:
 
@@ -39,6 +39,8 @@ p. Because this format uses literal @\n@'s as delimiters, please be sure that th
 { "delete" : { "_index" : "test", "_type" : "type1", "_id" : "2" } }
 { "create" : { "_index" : "test", "_type" : "type1", "_id" : "3" } }
 { "field1" : "value3" }
+{ "update" : {"_id" : "1", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
+{ "doc" : {"field" : "value"} }
 </pre>
 
 p. The endpoints are @/_bulk@, @/{index}/_bulk@, and @{index}/type/_bulk@. When the index or the index/type are provided, they will be used by default on bulk items that don't provide them explicitly.
