@@ -180,7 +180,7 @@ h3. Examples:
 p. All aliases for the index users:
 
 <pre class="prettyprint">
-curl -XGET 'localhost:9200/users/_alias/*
+curl -XGET 'localhost:9200/users/_alias/*'
 </pre>
 
 p. Response:
@@ -224,7 +224,7 @@ p. Response:
 p. All aliases with the name 2013 in any index:
 
 <pre class="prettyprint">
-curl -XGET 'localhost:9200/_alias/2013
+curl -XGET 'localhost:9200/_alias/2013'
 </pre>
 
 p. Response:
@@ -247,7 +247,7 @@ p. Response:
 p. All aliases that start with 2013_01 in any index:
 
 <pre class="prettyprint">
-curl -XGET 'localhost:9200/_alias/2013_01*
+curl -XGET 'localhost:9200/_alias/2013_01*'
 </pre>
 
 p. Response:
@@ -265,9 +265,9 @@ p. Response:
 p. There is also head veriant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Examples:
 
 <pre class="prettyprint">
-curl -XHEAD 'localhost:9200/_alias/2013
-curl -XHEAD 'localhost:9200/_alias/2013_01*
-curl -XHEAD 'localhost:9200/users/_alias/*
+curl -XHEAD 'localhost:9200/_alias/2013'
+curl -XHEAD 'localhost:9200/_alias/2013_01*'
+curl -XHEAD 'localhost:9200/users/_alias/*'
 </pre>
 
 h3. Pre 0.90.1 way of getting index aliases
