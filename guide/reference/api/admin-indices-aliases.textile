@@ -55,49 +55,6 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 
 p. It is an error to index to an alias which points to more than one index.
 
-h2. Add a single index alias
-
-p. Add put index alias api for adding a single index alias. Options:
-* `index` - The index to alias refers to. This is a required option.
-* `alias` - The name of the alias. This is a required option.
-* `routing` - An optional routing that can be associated with an alias.
-* `filter` - An optional filter that can be associated with an alias. 
-
-p. The rest endpoint is: `/{index}/_alias/{alias}`
-
-h3. Examples:
-
-p. Adding time based alias:
-
-<pre class="prettyprint">
-curl -XPUT 'localhost:9200/logs_201305/_alias/2013'
-</pre>
-
-p. Adding user alias:
-
-<pre class="prettyprint">
-curl -XPUT 'localhost:9200/users/_alias/user_12' -d '{
-    "routing" : "12",
-	"filter" : {
-		"term" : {
-			"user_id" : 12
-		}
-	}	
-}'
-</pre>
-
-h2. Delete a single index alias
-
-p. Add delete index alias api for deleting a single alias. Options:
-* `index` - The index the alias is in, the needs to be deleted. This is a required option.
-* `alias` - The name of the alias to delete. This is a required option.
-
-p. The rest endpoint is: /{index}/_alias/{alias} Example:
-
-<pre class="prettyprint">
-curl -XDELETE 'localhost:9200/users/_alias/user_12'
-</pre>
-
 h2. Filtered Aliases
 
 p. Aliases with filters provide an easy way to create different "views" of the same index. The filter can be defined using Query DSL and is applied to all Search, Count, Delete By Query and More Like This operations with this alias. Here is an example:
@@ -162,6 +119,49 @@ p. If an operation that uses routing alias also has a routing parameter, an inte
 
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/alias2/_search?q=user:kimchy&routing=2,3'
+</pre>
+
+h2. Add a single index alias
+
+p. Add put index alias api for adding a single index alias. Options:
+* `index` - The index to alias refers to. This is a required option.
+* `alias` - The name of the alias. This is a required option.
+* `routing` - An optional routing that can be associated with an alias.
+* `filter` - An optional filter that can be associated with an alias. 
+
+p. The rest endpoint is: `/{index}/_alias/{alias}`
+
+h3. Examples:
+
+p. Adding time based alias:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/logs_201305/_alias/2013'
+</pre>
+
+p. Adding user alias:
+
+<pre class="prettyprint">
+curl -XPUT 'localhost:9200/users/_alias/user_12' -d '{
+    "routing" : "12",
+	"filter" : {
+		"term" : {
+			"user_id" : 12
+		}
+	}	
+}'
+</pre>
+
+h2. Delete a single index alias
+
+p. Add delete index alias api for deleting a single alias. Options:
+* `index` - The index the alias is in, the needs to be deleted. This is a required option.
+* `alias` - The name of the alias to delete. This is a required option.
+
+p. The rest endpoint is: /{index}/_alias/{alias} Example:
+
+<pre class="prettyprint">
+curl -XDELETE 'localhost:9200/users/_alias/user_12'
 </pre>
 
 h2. Retrieving existing aliases
