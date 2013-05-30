@@ -204,7 +204,7 @@ curl -XGET 'localhost:9200/_alias/2013_01*
 }
 </pre>
 
-p. There is also head veriant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Example:
+p. There is also head veriant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Examples:
 
 <pre class="prettyprint">
 curl -XHEAD 'localhost:9200/_alias/2013
