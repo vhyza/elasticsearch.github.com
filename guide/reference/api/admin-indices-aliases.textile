@@ -123,7 +123,7 @@ curl -XGET 'http://localhost:9200/alias2/_search?q=user:kimchy&routing=2,3'
 
 h2. Add a single index alias
 
-p. Add put index alias api for adding a single index alias. Options:
+p. From version @0.90.1@ there is a single api to add a single index alias, options:
 * @index@ - The index to alias refers to. This is a required option.
 * @alias@ - The name of the alias. This is a required option.
 * @routing@ - An optional routing that can be associated with an alias.
@@ -154,7 +154,7 @@ curl -XPUT 'localhost:9200/users/_alias/user_12' -d '{
 
 h2. Delete a single index alias
 
-p. Add delete index alias api for deleting a single alias. Options:
+p. From version @0.90.1@ there is an api to delete a single index alias, options:
 * @index@ - The index the alias is in, the needs to be deleted. This is a required option.
 * @alias@ - The name of the alias to delete. This is a required option.
 
