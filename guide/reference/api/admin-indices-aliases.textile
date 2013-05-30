@@ -181,6 +181,11 @@ p. All aliases for the index users:
 
 <pre class="prettyprint">
 curl -XGET 'localhost:9200/users/_alias/*
+</pre>
+
+p. Response:
+
+<pre class="prettyprint">
  {
   "users" : {
     "aliases" : {
@@ -220,6 +225,11 @@ p. All aliases with the name 2013 in any index:
 
 <pre class="prettyprint">
 curl -XGET 'localhost:9200/_alias/2013
+</pre>
+
+p. Response:
+
+<pre class="prettyprint">
 {
   "logs_201304" : {
     "aliases" : {
@@ -238,6 +248,11 @@ p. All aliases that start with 2013_01 in any index:
 
 <pre class="prettyprint">
 curl -XGET 'localhost:9200/_alias/2013_01*
+</pre>
+
+p. Response:
+
+<pre class="prettyprint">
 {
   "logs_20130101" : {
     "aliases" : {
