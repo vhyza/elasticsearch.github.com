@@ -123,14 +123,14 @@ curl -XGET 'http://localhost:9200/alias2/_search?q=user:kimchy&routing=2,3'
 
 h2. Retrieving existing aliases
 
-p. The get index alias api (Added since @0.90.1@) allows to filter by alias name and index name. This api redirects to the master and fetches the requested index aliases, if available. This api only serialises the found index aliases.
+p. The get index alias api (Available since @0.90.1@) allows to filter by alias name and index name. This api redirects to the master and fetches the requested index aliases, if available. This api only serialises the found index aliases.
 
 Possible options:
 * @index@ - The index name to get aliases for. Partially names are supported via wildcards, also multiple index names can be specified separated with a comma. Also the alias name for an index can be used.
 * @alias@ - The name of alias to return in the response. Like the index option, this option supports wildcards and the option the specify multiple alias names separated by a comma. This is a required option.
 * @ignore_indices@ - What to do is an specified index name doesn't exist. If set to `missing` then those indices are ignored.
 
-p. The rest endpoint is: `/{index}/_alias/{alias}`
+p. The rest endpoint is: @/{index}/_alias/{alias}@.
 
 h3. Examples:
 
@@ -204,9 +204,13 @@ curl -XGET 'localhost:9200/_alias/2013_01*
 }
 </pre>
 
-p. 
+p. There is also head veriant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Example:
 
-
+<pre class="prettyprint">
+curl -XHEAD 'localhost:9200/_alias/2013
+curl -XHEAD 'localhost:9200/_alias/2013_01*
+curl -XHEAD 'localhost:9200/users/_alias/*
+</pre>
 
 h3. Pre 0.90.1 way of getting index aliases
 
