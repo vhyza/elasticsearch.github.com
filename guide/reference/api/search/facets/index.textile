@@ -60,7 +60,7 @@ This request will return articles “Two” and “Three” (because they match 
 }
 </pre>
 
-In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probably want to display these to your users. The facet also returns the number of documents which have no value for the field (@missing@), the number of facet values not included in the returned facets (@other@), and the total number of tokens in the facet (@total@).
+In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probably want to display these to your users. The facet also returns the number of documents which have no value for the field (@missing@), the number of documents for facet values not included in the returned facets (@other@), and the total number of documents for all tokens in the facet (@total@).
 
 Notice, that the counts are scoped to the current query: _foo_ is counted only twice (not three times), _bar_ is counted twice and _baz_ once.
 
