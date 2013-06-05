@@ -28,7 +28,7 @@ p. One of the problems when indexing inner objects that occur several times in a
 
 p. Searching for name set to blue and count higher than 5 will match the doc, because in the first element the name matches blue, and in the second element, count matches "higher than 5".
 
-p. Nested mapping allow to map certain inner objects (usually multi instance ones), for example:
+p. Nested mapping allows mapping certain inner objects (usually multi instance ones), for example:
 
 <pre class="prettyprint lang-js">
 {

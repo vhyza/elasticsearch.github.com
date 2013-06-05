@@ -75,7 +75,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@index_analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string. Can be updated on an existing field.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). If @index@ is set to @no@ this defaults to @false@, otherwise, defaults to @true@ or to the parent @object@ type setting.|
-|@ignore_above@|Set to a size where above the mentioned size the string will be ignored. Handly for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
+|@ignore_above@|The analyzer will ignore strings larger than this size. Useful for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
 |@position_offset_gap@|Position increment gap between field instances with the same field name. Defaults to 0.|
 
 p. The @string@ type also support custom indexing parameters associated with the indexed value. For example:
@@ -274,6 +274,6 @@ p. Defining the Similarity for a field is done via the @similarity@ mapping prop
 }
 </pre>
 
-p. The following Similarties are configured out-of-box:
+p. The following Similarities are configured out-of-box:
 * @default@ - The Default TF/IDF algorithm used by Elasticsearch and Lucene in previous versions.
 * @BM25@ - The BM25 algorithm. "See Okapi_BM25":http://en.wikipedia.org/wiki/Okapi_BM25 for more details.

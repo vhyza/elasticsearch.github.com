@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_modules_discovery
 ---
 
-p. ec2 discovery allows to use the ec2 APIs to perform automatic discovery (similar to multicast in non hostile multicast environments). Here is a simple sample configuration:
+p. EC2 discovery allows to use the EC2 APIs to perform automatic discovery (similar to multicast in non hostile multicast environments). Here is a simple sample configuration:
 
 <pre class="prettyprint lang-js">
 cloud:
@@ -30,9 +30,9 @@ p. The following are a list of settings (prefixed with @discovery.ec2@) that can
 
 h1. Filtering by Tags
 
-p. The ec2 discovery can also filter machines to include in the cluster based on tags (and not just groups). The settings to use include the @discovery.ec2.tag.@ prefix. For example, setting @discovery.ec2.tag.stage@ to @dev@ will only filter instances with a tag key set to @stage@, and a value of @dev@. Several tags set will require all of those tags to be set for the instance to be included.
+p. EC2 discovery can also filter machines to include in the cluster based on tags (and not just groups). The settings to use include the @discovery.ec2.tag.@ prefix. For example, setting @discovery.ec2.tag.stage@ to @dev@ will only filter instances with a tag key set to @stage@, and a value of @dev@. Several tags set will require all of those tags to be set for the instance to be included.
 
-p. One practical use for tag filtering is when an ec2 cluster contains many nodes that are not running elasticsearch. In this case (particularly with high @ping_timeout@ values) there is a risk that a new node's discovery phase will end before it has found the cluster (which will result in it declaring itself master of a new cluster with the same name - highly undesirable). Tagging elasticsearch ec2 nodes and then filtering by that tag will resolve this issue.
+p. One practical use for tag filtering is when an EC2 cluster contains many nodes that are not running elasticsearch. In this case (particularly with high @ping_timeout@ values) there is a risk that a new node's discovery phase will end before it has found the cluster (which will result in it declaring itself master of a new cluster with the same name - highly undesirable). Tagging elasticsearch EC2 nodes and then filtering by that tag will resolve this issue.
 
 h1. Region
 
@@ -40,4 +40,4 @@ p. The @cloud.aws.region@ can be set to a region and will automatically use the 
 
 h1. Automatic Node Attributes
 
-p. Though not dependent on actually using @ec2@ as discovery (but still requires the cloud aws plugin installed), the plugin can automatically add node attributes relating to ec2 (for example, availability zone, that can be used with the awareness allocation feature). In order to enable it, set @cloud.node.auto_attributes@ to @true@ in the settings.
+p. Though not dependent on actually using @ec2@ as discovery (but still requires the cloud aws plugin installed), the plugin can automatically add node attributes relating to EC2 (for example, availability zone, that can be used with the awareness allocation feature). In order to enable it, set @cloud.node.auto_attributes@ to @true@ in the settings.

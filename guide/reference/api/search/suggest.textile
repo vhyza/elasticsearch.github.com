@@ -24,7 +24,7 @@ curl -s -XPOST 'localhost:9200/_search' -d '{
 }' 
 </pre>
 
-p. Suggest request executed against the `_suggest` endpoint should omit the surrounding `suggest` element which is only used if the suggest request is part of a search.
+p. Suggest requests executed against the `_suggest` endpoint should omit the surrounding `suggest` element which is only used if the suggest request is part of a search.
 
 <pre class="prettyprint lang-js">
 curl -XPOST 'localhost:9200/_suggest' -d '{
@@ -37,7 +37,7 @@ curl -XPOST 'localhost:9200/_suggest' -d '{
 }'
 </pre>
 
-p. Several suggestions can be specified per request. Each suggestion is identified with an arbitary name. In the example below two suggestions are requested. Both @my-suggest-1@ and @my-suggest-2@ suggestions use the @term@ suggester, but have a different @text@. 
+p. Several suggestions can be specified per request. Each suggestion is identified with an arbitrary name. In the example below two suggestions are requested. Both @my-suggest-1@ and @my-suggest-2@ suggestions use the @term@ suggester, but have a different @text@. 
 
 <pre class="prettyprint lang-js">
 "suggest" : {
@@ -56,7 +56,7 @@ p. Several suggestions can be specified per request. Each suggestion is identifi
 }
 </pre>
 
-p. The below suggest response example includes the suggestion response for @my-suggest-1@ and @my-suggest-2@. Each suggestion part contains entries. Each entry is effectively a token from the suggest text and contains the suggestion entry text, the original start offset and length in the suggest text and if found an arbitary number of options.
+p. The below suggest response example includes the suggestion response for @my-suggest-1@ and @my-suggest-2@. Each suggestion part contains entries. Each entry is effectively a token from the suggest text and contains the suggestion entry text, the original start offset and length in the suggest text and if found an arbitrary number of options.
 
 <pre class="prettyprint lang-js">
 {
@@ -114,11 +114,11 @@ p. To avoid repitition of the suggest text, it is possible to define a global te
 }
 </pre>
 
-p. The suggest text can in the above example also be specied as suggestion specific option. The suggest text specified on suggestion level override the suggest text on the global level.
+p. The suggest text can in the above example also be specified as suggestion specific option. The suggest text specified on suggestion level override the suggest text on the global level.
 
 h1. Other suggest example.
 
-p. In the below example we request suggestions for the following suggest text: @devloping distibutd saerch engies@ on the @title@ field with a maximum of 3 suggestions per term inside the suggest text. Note that in this example we use the @count@ search type. This isn't required, but a nice optimalization. The suggestions are gather in the @query@ phase and in the case that we only care about suggestions (so no hits) we don't need to execute the @fetch@ phase.
+p. In the below example we request suggestions for the following suggest text: @devloping distibutd saerch engies@ on the @title@ field with a maximum of 3 suggestions per term inside the suggest text. Note that in this example we use the @count@ search type. This isn't required, but a nice optimization. The suggestions are gather in the @query@ phase and in the case that we only care about suggestions (so no hits) we don't need to execute the @fetch@ phase.
 
 <pre class="prettyprint lang-js">
 curl -s -XPOST 'localhost:9200/_search?search_type=count' -d '{
@@ -248,7 +248,7 @@ h1. Common term suggest options
 * @size@ - The maximum corrections to be returned per suggest text token.
 * @sort@ - Defines how suggestions should be sorted per suggest text term. Two possible value:
 ** @score@ - Sort by sore first, then document frequency and then the term itself.
-** @frequency@ - Sort by document frequency first, then simlarity score and then the term itself.
+** @frequency@ - Sort by document frequency first, then similarity score and then the term itself.
 * @suggest_mode@ - The suggest mode controls what suggestions are included or controls for what suggest text terms, suggestions should be suggested. Three possible values can be specified:
 ** @missing@ - Only suggest terms in the suggest text that aren't in the index. This is the default.
 ** @popular@ - Only suggest suggestions that occur in more docs then the original suggest text term.
@@ -262,13 +262,13 @@ h1. Other term suggest options:
 * @shard_size@ - Sets the maximum number of suggestions to be retrieved from each individual shard. During the reduce phase only the top N suggestions are returned based on the `size` option. Defaults to the `size` option. Setting this to a value higher than the `size` can be useful in order to get a more accurate document frequency for spelling corrections at the cost of performance. Due to the fact that terms are partitioned amongst shards, the shard level document frequencies of spelling corrections may not be precise. Increasing this will make these document frequencies more precise.
 * @max_inspections@ - A factor that is used to multiply with the `shards_size` in order to inspect more candidate spell corrections on the shard level. Can improve accuracy at the cost of performance. Defaults to 5.
 * @min_doc_freq@ - The minimal threshold in number of documents a suggestion should appear in. This can be specified as an absolute number or as a relative percentage of number of documents. This can improve quality by only suggesting high frequency terms. Defaults to 0f and is not enabled. If a value higher than 1 is specified then the number cannot be fractional. The shard level document frequencies are used for this option.
-* @max_term_freq@ - The maximum threshold in number of documents a sugges text token can exist in order to be included. Can be a relative percentage number (e.g 0.4) or an absolute number to represent document frequencies. If an value higher than 1 is specified then fractional can not be specified. Defaults to 0.01f. This can be used to exclude high frequency terms from being spellchecked. High frequency terms are usually spelled correctly on top of this also improves the spellcheck performance.  The shard level document frequencies are used for this option.
+* @max_term_freq@ - The maximum threshold in number of documents a suggest text token can exist in order to be included. Can be a relative percentage number (e.g 0.4) or an absolute number to represent document frequencies. If an value higher than 1 is specified then fractional can not be specified. Defaults to 0.01f. This can be used to exclude high frequency terms from being spellchecked. High frequency terms are usually spelled correctly on top of this also improves the spellcheck performance.  The shard level document frequencies are used for this option.
 
 
 
 h1. Phrase Suggester
 
-p. The @term@ suggester provides a very convenient API to access word alternatives on token basis within a certain string distance. The API allows accessing each token in the stream individually while suggest-selection is left to the API consumer. Yet, often pre-selected suggestions are required in order to present to the end-user. The @phrase@ suggester adds additoinal logic on top of the @term@ suggester to select entire corrected phrases instead of individual tokens weighted based on @ngram-langugage models@. In practice it this suggester will be able to make better decision about which tokens to pick based on co-occurence and frequencies.
+p. The @term@ suggester provides a very convenient API to access word alternatives on token basis within a certain string distance. The API allows accessing each token in the stream individually while suggest-selection is left to the API consumer. Yet, often pre-selected suggestions are required in order to present to the end-user. The @phrase@ suggester adds additional logic on top of the @term@ suggester to select entire corrected phrases instead of individual tokens weighted based on @ngram-langugage models@. In practice it this suggester will be able to make better decision about which tokens to pick based on co-occurence and frequencies.
 
 h2. API Example
 
@@ -336,11 +336,11 @@ h1. Basic Phrase suggest API  parameters
 * @gram_size@ - sets max size of the n-grams (shingles) in the @field@. If the field doesn't contain n-grams (shingles) this should be omitted or set to @1@. Note that Elasticsearch tries to detect the gram size based on the specified @field@. If the field uses a @shingle@ filter the @gram_size@ is set to the @max_shingle_size@ if not explicitly set.
 * @real_word_error_likelihood@ - the likelihood of a term being a misspelled even if the term exists in the dictionary. The default it @0.95@ corresponding to 5% or the real words are misspelled.
 * @confidence@ - The confidence level defines a factor applied to the input phrases score which is used as a threshold for other suggest candidates. Only candidates that score higher than the threshold will be included in the result. For instance a confidence level of @1.0@ will only return suggestions that score higher than the input phrase. If set to @0.0@ the top N candidates are returned. The default is @1.0@.
-* @max_errors@ - the maximum percentage of the terms that at most considered to be misspellings in order to form a correction. This method accepts a float value in the range @[0..1)@ as a fraction of the actual query terms a number @>=1@ as an absolut number of query terms. The default is set to @1.0@ which corresponds to that only corrections with at most 1 misspelled term are returned.
-* @separator@ - the separator that is used to separate terms in the bigram field. If not set the whitespce character is used as a separator.
+* @max_errors@ - the maximum percentage of the terms that at most considered to be misspellings in order to form a correction. This method accepts a float value in the range @[0..1)@ as a fraction of the actual query terms a number @>=1@ as an absolute number of query terms. The default is set to @1.0@ which corresponds to that only corrections with at most 1 misspelled term are returned.
+* @separator@ - the separator that is used to separate terms in the bigram field. If not set the whitespace character is used as a separator.
 * @size@ - the number of candidates that are generated for each individual query term Low numbers like @3@ or @5@ typically produce good results. Raising this can bring up terms with higher edit distances. The default is @5@.
 * @analyzer@ -  Sets the analyzer to analyse to suggest text with. Defaults to the search analyzer of the suggest field passed via @field@.
-* @shard_size@ - Sets the maximum number of suggested term to be retrieved from each individual shard. During the reduce phase the only the top N suggestions are returned based on the @size@ option. Defaults to @5@.
+* @shard_size@ - Sets the maximum number of suggested term to be retrieved from each individual shard. During the reduce phase, only the top N suggestions are returned based on the @size@ option. Defaults to @5@.
 * @text@ - Sets the text / query to provide suggestions for.
 
 h2. Smoothing Models

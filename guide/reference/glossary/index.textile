@@ -196,7 +196,7 @@ glossary:
     id: term
     text: >
         A term is an exact value that is indexed in elasticsearch. The terms
-        @foo@, @Foo@, @FOO@ are NOT equivalent. Terms (ie exact values) can
+        @foo@, @Foo@, @FOO@ are NOT equivalent. Terms (i.e. exact values) can
         be searched for using 'term' queries.
 
         See also "text":#text and "analysis":#analysis.

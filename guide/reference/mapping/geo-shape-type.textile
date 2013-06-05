@@ -55,7 +55,7 @@ This mapping maps the location field to the geo_shape type using the quad_tree i
 
 h2. Performance considerations
 
-Elasticsearch uses the paths in the prefix tree as terms in the index and in queries. The higher the levels is (and thus the precision), the more terms are generated. Both calculating the terms, keeping them in memory, and storing them has a price of course. Especially with higher tree levels, indices can become extremely large even with a modest amount of data. Additionally, the size of the feaures also matters. Big, complex polygons can take up a lot of space at higher tree levels. Which setting is right depends on the use case. Generally one trades off accuracy against index size and query performance. 
+Elasticsearch uses the paths in the prefix tree as terms in the index and in queries. The higher the levels is (and thus the precision), the more terms are generated. Both calculating the terms, keeping them in memory, and storing them has a price of course. Especially with higher tree levels, indices can become extremely large even with a modest amount of data. Additionally, the size of the features also matters. Big, complex polygons can take up a lot of space at higher tree levels. Which setting is right depends on the use case. Generally one trades off accuracy against index size and query performance. 
 
 The defaults in elastic search for both implementations are a compromise between index size and a reasonable level of precision of 50m at the equator. This allows for indexing tens of millions of shapes without overly bloating the resulting index too much relative to the input size.
 
@@ -139,4 +139,4 @@ A list of geojson polygons.
 
 h1. Sorting and Retrieving index Shapes
 
-p. Due to the complex input structure and index representation of shapes, it is not currently possible to sort shapes or retrieve their fields directly. The geo_shape value is only retrieveable through the @_source@ field.  
+p. Due to the complex input structure and index representation of shapes, it is not currently possible to sort shapes or retrieve their fields directly. The geo_shape value is only retrievable through the @_source@ field.  

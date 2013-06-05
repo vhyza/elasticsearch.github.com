@@ -7,7 +7,7 @@ sidebar: reference_modules
 
 p. The scripting module allows to use scripts in order to evaluate custom expressions. For example, scripts can be used to return "script fields" as part of a search request, or can be used to evaluate a custom score for a query and so on.
 
-p. The scripting module uses by default "mvel":http://mvel.codehaus.org/ as the scripting language with some extensions. mvel is used since its extremely fast and very simple to use, and in most cases, simple expressions are needed (for example, mathematical equations).
+p. The scripting module uses by default "mvel":http://mvel.codehaus.org/ as the scripting language with some extensions. mvel is used since it is extremely fast and very simple to use, and in most cases, simple expressions are needed (for example, mathematical equations).
 
 p. Additional @lang@ plugins are provided to allow to execute scripts in different languages. Currently supported plugins are @lang-javascript@ for JavaScript, @lang-groovy@ for Groovy, and @lang-python@ for Python. All places where a `script` parameter can be used, a @lang@ parameter (on the same level) can be provided to define the language of the script. The @lang@ options are @mvel@, @js@, @groovy@, @python@, and @native@.
 
@@ -101,7 +101,7 @@ p. There are several built in functions that can be used within scripts. They in
 |@signum(d)@|Returns the signum function of the argument.|
 |@sinh(x)@|Returns the hyperbolic sine of a value.|
 |@cosh(x)@|Returns the hyperbolic cosine of a value.|
-|@tanh(x)@|eturns the hyperbolic tangent of a value.|
+|@tanh(x)@|Returns the hyperbolic tangent of a value.|
 |@hypot(x, y)@|Returns sqrt(_x^2_ + _y^2_) without intermediate overflow or underflow.|
 
 
