@@ -7,7 +7,7 @@ sidebar: reference_query_dsl
 
 p. The @regexp@ query allows you to use regular expression term queries.
 
-p. *Note*: The performance of a a @regexp@ query heavily depends on the regular expression chosen. Matching everything like @.*@ is very slow as well as using lookaround regular expressions. If possible, you should try to use a long prefix before your regular expression starts. Wildcard matchers like @.*?+@ will mostly lower performance.
+p. *Note*: The performance of a @regexp@ query heavily depends on the regular expression chosen. Matching everything like @.*@ is very slow as well as using lookaround regular expressions. If possible, you should try to use a long prefix before your regular expression starts. Wildcard matchers like @.*?+@ will mostly lower performance.
 
 <pre class="prettyprint lang-js">
 {

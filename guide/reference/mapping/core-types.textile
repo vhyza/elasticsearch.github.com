@@ -57,7 +57,7 @@ p. The text based string type is the most basic type, and contains one or more c
 }
 </pre>
 
-p. The above mapping defines a @string@ @message@ property/field within the @tweet@ type. The field is stored in the index (so it can later be retrieved using selective loading when searching), and it gets analyzed (broken down into searchable terms). If the message has a @null@ value, then then value that will be stored is @na@.
+p. The above mapping defines a @string@ @message@ property/field within the @tweet@ type. The field is stored in the index (so it can later be retrieved using selective loading when searching), and it gets analyzed (broken down into searchable terms). If the message has a @null@ value, then the value that will be stored is @na@.
 
 p. The following table lists all the attributes that can be used with the @string@ type:
 
