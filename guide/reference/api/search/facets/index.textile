@@ -66,7 +66,7 @@ Notice, that the counts are scoped to the current query: _foo_ is counted only t
 
 That's because the primary purpose of facets is to enable "_faceted navigation_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet, i.e. restrict the search to a specific category, price or date range. See the example of faceted navigation at _LinkedIn_ below:
 
-!/guide/images/linkedin-faceted-search.png(Faceted Search at LinkedIn)!
+!/content/themes/elasticsearch-org/images/content/dashboards/linkedin-faceted-search.png(Faceted Search at LinkedIn)!
 
 Facets can be used, however, for other purposes: computing histograms, statistical aggregations, and more. See the article about "data visualization":/blog/2011/05/13/data-visualization-with-elasticsearch-and-protovis.html on the ElasticSearch's blog for inspiration.
 
