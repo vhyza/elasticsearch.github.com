@@ -76,4 +76,11 @@ p. Type name: @IB@
 
 h2. Default and Base Similarities
 
-p. By default, ElasticSearch will use whatever Similarity is configured as @default@.  However, the Similarity functions @queryNorm()@ and @coord()@ are not per-field.  Consequently, for expert users wanting to change the implementation used for these two methods, while not changing the @default@, it is possible to configure a Similarity with the name @base@.  This Similarity will then be used for the two methods.
+p. By default, Elasticsearch will use whatever similarity is configured as @default@.  However, the similarity functions @queryNorm()@ and @coord()@ are not per-field.  Consequently, for expert users wanting to change the implementation used for these two methods, while not changing the @default@, it is possible to configure a similarity with the name @base@.  This similarity will then be used for the two methods.
+
+p. You can change the default similarity for all fields like this:
+
+<pre class="prettyprint lang-js">
+index.similarity.default.type: BM25
+</pre>
+
