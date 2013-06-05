@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_mapping
 ---
 
-p. JSON documents are hierarchal in nature, allowing to define inner "object"s within the actual JSON. ElasticSearch completely understand the nature of objects and allows to map them easily, automatically support their dynamic nature (one object can have different fields each time), and provides query support for their inner field. Let's take the following JSON as an example:
+p. JSON documents are hierarchical in nature, allowing them to define inner "objects" within the actual JSON. ElasticSearch completely understands the nature of these inner objects and can map them easily, providing query support for their inner fields. Because each document can have objects with different fields each time, objects mapped this way are known as "dynamic".  Dynamic mapping isenabled by default. Let's take the following JSON as an example:
 
 <pre class="prettyprint lang-js">
 {
@@ -22,7 +22,7 @@ p. JSON documents are hierarchal in nature, allowing to define inner "object"s w
 }
 </pre>
 
-p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, though a special "root object type":/guide/reference/mapping/root-object-type.html which allows for additional mapping definitions.
+p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with a @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, although its a special "root object type":root-object-type.html which allows for additional mapping definitions.
 
 p. The following is an example of explicit mapping for the above JSON:
 
@@ -52,11 +52,11 @@ p. In order to mark a mapping of type @object@, set the @type@ to object. This i
 
 h1. properties
 
-p. An object mapping can optionally define one or more properties using the @properties@ tag. Properties list the properties this field will have. Each property can be either another @object@, or one of the "core_types":/guide/reference/mapping/core-types.html.
+p. An object mapping can optionally define one or more properties using the @properties@ tag for a field. Each property can be either another @object@, or one of the "core_types":/guide/reference/mapping/core-types.html.
 
 h1. dynamic
 
-p. One of the most important features of ElasticSearch is its ability to be schema-less. This means that, in our example above, the @person@ object can later on be indexed with a new property, for example, @age@, and it will automatically be added to the mapping definitions. Same goes for the @tweet@ root object.
+p. One of the most important features of ElasticSearch is its ability to be schema-less. This means that, in our example above, the @person@ object can be indexed later with a new property -- @age@, for example -- and it will automatically be added to the mapping definitions. Same goes for the @tweet@ root object.
 
 p. This feature is by default turned on, and it's the @dynamic@ nature of each object mapped. Each object mapped is automatically dynamic, though it can be explicitly turned off:
 
@@ -83,13 +83,13 @@ p. This feature is by default turned on, and it's the @dynamic@ nature of each o
 }
 </pre>
 
-p. In the above example, the @name@ object mapped is not dynamic, meaning that if, in the future, we will try and index a JSON with a @middle_name@ within the @name@ object, it will get discarded and not added.
+p. In the above example, the @name@ object mapped is not dynamic, meaning that if, in the future, we try to index JSON with a @middle_name@ within the @name@ object, it will get discarded and not added.
 
-p. There is no performance overhead of an @object@ being dynamic, the ability to turn it off is provided as a safe mechanism so "malformed" objects won't, by mistake, index data that we do not wish to be indexed.
+p. There is no performance overhead if an @object@ is dynamic, the ability to turn it off is provided as a safety mechanism so "malformed" objects won't, by mistake, index data that we do not wish to be indexed.
 
-p. The dynamic nature also works with inner objects, meaning that if a new @object@ is provided within a mapped dynamic object, it will be automatically added to the index and mapped as well.
+p. If a dynamic object contains yet another inner @object@, it will be automatically added to the index and mapped as well.
 
-p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":/guide/reference/mapping/core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
+p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
 
 p. Date fields are special since they are represented as a @string@. Date fields are detected if they can be parsed as a date when they are first introduced into the system. The set of date formats that are tested against can be configured using the @date_formats@ and explained later.
 
