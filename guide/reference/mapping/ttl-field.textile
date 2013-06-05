@@ -37,6 +37,8 @@ p. You can provide a per index/type default @_ttl@ value as follows:
 
 p. In this case, if you don't provide a @_ttl@ value in your query or in the @_source@ all tweets will have a @_ttl@ of one day.
 
+p. In case you do not specify a time unit like @d@ (days), @m@ (minutes), @h@ (hours), @ms@ (milliseconds) or @w@ (weeks), milliseconds is used as default unit.
+
 p. If no @default@ is set and no @_ttl@ value is given then the document has an infinite @_ttl@ and will not expire.
 
 p. You can dynamically update the @default@ value using the put mapping API. It won't change the @_ttl@ of already indexed documents but will be used for future documents.
