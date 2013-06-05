@@ -60,9 +60,14 @@ This request will return articles “Two” and “Three” (because they match 
 }
 </pre>
 
-In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probably want to display these to your users. The facet also returns the number of documents which have no value for the field (@missing@), the number of documents for facet values not included in the returned facets (@other@), and the total number of documents for all tokens in the facet (@total@).
+In the @terms@ array, relevant _terms_ and _counts_ are returned. You'll probably want to display these to your users. The facet returns several important counts:
 
-Notice, that the counts are scoped to the current query: _foo_ is counted only twice (not three times), _bar_ is counted twice and _baz_ once.
+ * @missing@ : The number of documents which have no value for the faceted field
+ * @total@ : The total number of terms in the facet
+ * @other@ : The number of terms not included in the returned facet (effectively @other@ = @total@ - @terms@ )
+
+
+Notice, that the counts are scoped to the current query: _foo_ is counted only twice (not three times), _bar_ is counted twice and _baz_ once. Also note that terms are counted once per document, even if the occur more frequently in that document.
 
 That's because the primary purpose of facets is to enable "_faceted navigation_":http://en.wikipedia.org/wiki/Faceted_search, allowing the user to refine her query based on the insight from the facet, i.e. restrict the search to a specific category, price or date range. See the example of faceted navigation at _LinkedIn_ below:
 
