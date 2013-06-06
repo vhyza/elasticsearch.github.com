@@ -48,7 +48,7 @@ p. The get API allows for @_type@ to be optional. Set it to @_all@ in order to f
 
 h1. Fields
 
-p. The get operation allows to specify a set of fields that will be returned (by default, its the @_source@ field) by passing the @fields@ parameter. For example:
+p. The get operation allows specifying a set of fields that will be returned (by default, the @_source@ field) by passing the @fields@ parameter. For example:
 
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'
@@ -58,7 +58,7 @@ p. The returned fields will either be loaded if they are stored, or fetched from
 
 h1. Getting the _source directly
 
-p. Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it. The get endpoint has the followig structure: @{index}/{type}/{id}/_source@. Curl example:
+p. Since version @0.90.1@ there is a new rest end point that allows the source to be returned directly without any additional content around it. The get endpoint has the following structure: @{index}/{type}/{id}/_source@. Curl example:
 
 <pre class="prettyprint">
 curl -XGET 'http://localhost:9200/twitter/tweet/1/_source'

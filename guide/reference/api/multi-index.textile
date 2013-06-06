@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. Many of elasticearch APIs support operating across several indices. The format usually includes an index name, or a comma separated index names. It also supports using aliases, or a comma delimited list of aliases and indexes for the APIs.
+p. Many Elasticearch APIs support operating across several indices. The format usually includes an index name, or a comma separated index names. It also supports using aliases, or a comma delimited list of aliases and indexes for the APIs.
 
 p. Using the APIs against all indices is simple by usually either using the @_all@ index, or simply omitting the index.
 

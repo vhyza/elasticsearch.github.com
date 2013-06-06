@@ -24,7 +24,7 @@ p. The @regexp@ filter is similar to the "regexp":/guide/reference/query-dsl/reg
 
 p. You can also select the cache name and use the same regexp flags in the filter as in the query. 
 
-p. *Note*: You have to enable caching explicitely in order to have the @regexp@ filter cached.
+p. *Note*: You have to enable caching explicitly in order to have the @regexp@ filter cached.
 
 <pre class="prettyprint lang-js">
 {

@@ -41,4 +41,4 @@ p. The @has_child@ filter also accepts a filter instead of a query:
 
 h1. Memory Considerations
 
-p. With the current implementation, all @_id@ values are loaded to memory (heap) in order to support fast lookups, so make sure there is enough mem for it.
+p. With the current implementation, all @_id@ values are loaded to memory (heap) in order to support fast lookups, so make sure there is enough memory for it.

@@ -5,7 +5,7 @@ cat: guide
 sidebar: reference_api
 ---
 
-p. The optimize API allows to optimize one or more indices through an API. The optimize process basically optimizes the index for faster search operations (and relates to the number of segments a lucene index holds within each shard). The optimize operation allows to reduce the number of segments by merging them.
+p. The optimize API allows to optimize one or more indices through an API. The optimize process basically optimizes the index for faster search operations (and relates to the number of segments a Lucene index holds within each shard). The optimize operation allows to reduce the number of segments by merging them.
 
 <pre class="prettyprint">
 $ curl -XPOST 'http://localhost:9200/twitter/_optimize'

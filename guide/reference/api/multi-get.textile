@@ -24,7 +24,7 @@ curl 'localhost:9200/_mget' -d '{
 }'
 </pre>
 
-p. The @mget@ endpoint can also be used against an index (in which case its not required in the body):
+p. The @mget@ endpoint can also be used against an index (in which case it is not required in the body):
 
 <pre class="prettyprint">
 curl 'localhost:9200/test/_mget' -d '{

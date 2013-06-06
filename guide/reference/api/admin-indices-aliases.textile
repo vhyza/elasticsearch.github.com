@@ -76,7 +76,7 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 
 h2. Routing
 
-p. Allows to associate routing values with aliases. This feature can be used together with filtering aliases in order to avoid unnecessary shard operations.
+p. It is possible to associate routing values with aliases. This feature can be used together with filtering aliases in order to avoid unnecessary shard operations.
 
 p. The following command creates a new alias @alias1@ that points to index @test@. After @alias1@ is created, all operations with this alias are automatically modified to use value @1@ for routing:
 
@@ -262,7 +262,7 @@ p. Response:
 }
 </pre>
 
-p. There is also head veriant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Examples:
+p. There is also a HEAD variant of the get indices aliases api to check if index aliases exist. The indices aliases exists api supports the same option as the get indices aliases api. Examples:
 
 <pre class="prettyprint">
 curl -XHEAD 'localhost:9200/_alias/2013'

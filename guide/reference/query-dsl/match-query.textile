@@ -15,7 +15,7 @@ p. A family of @match@ queries that accept text/numerics/dates, analyzes it, and
 }
 </pre>
 
-p. Note, @message@ is the name of a field, you can subsitute the name of any field (including @_all@) instead.
+p. Note, @message@ is the name of a field, you can substitute the name of any field (including @_all@) instead.
 
 h2. Types of Match Queries
 

@@ -81,7 +81,7 @@ p. The below suggest response example includes the suggestion response for @my-s
 }
 </pre>    
  
-p. Each options array contains a option object that includes the suggested text, its document frequency and score compared to the suggest entry text. The meaning of the score depends on the used suggester. The term suggester's score is based on the edit distance.
+p. Each options array contains an option object that includes the suggested text, its document frequency and score compared to the suggest entry text. The meaning of the score depends on the used suggester. The term suggester's score is based on the edit distance.
 
 <pre class="prettyprint lang-js">
 "options": [
@@ -96,7 +96,7 @@ p. Each options array contains a option object that includes the suggested text,
 
 h1. Global suggest text
 
-p. To avoid repitition of the suggest text, it is possible to define a global text. In the example below the suggest text is defined globally and applies to the @my-suggest-1@ and @my-suggest-2@ suggestions.
+p. To avoid repetition of the suggest text, it is possible to define a global text. In the example below the suggest text is defined globally and applies to the @my-suggest-1@ and @my-suggest-2@ suggestions.
 
 <pre class="prettyprint lang-js">
 "suggest" : {
@@ -297,7 +297,7 @@ curl -XPOST 'localhost:9200/_search' -d {
 }
 </pre>
 
-p. The response contains suggested sored by the most likely spell correction first. In this case we got the expected correction @xorr the god jewel@ first while the second correction is less conservative where only one of the errors is corrected. Note, the request is executed with @max_errors@ set to @0.5@ so 50% of the terms can contain misspellings (See parameter descriptions below).
+p. The response contains suggested scored by the most likely spell correction first. In this case we got the expected correction @xorr the god jewel@ first while the second correction is less conservative where only one of the errors is corrected. Note, the request is executed with @max_errors@ set to @0.5@ so 50% of the terms can contain misspellings (See parameter descriptions below).
 
 <pre class="prettyprint lang-js">
   {

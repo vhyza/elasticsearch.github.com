@@ -12,7 +12,7 @@ be sorted by the node handling the overall search request.
 
 Currently the rescore API has only one implementation: the query rescorer, which
 uses a query to tweak the scoring. In the future, alternative rescorers may
-be made available, eg a pair-wise rescorer.
+be made available, for example, a pair-wise rescorer.
 
 *Note:* the @rescore@ phase is not executed when "@search_type@":/guide/reference/api/search/search-type.html is set to @scan@ or @count@.
 

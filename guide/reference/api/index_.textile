@@ -206,7 +206,7 @@ p. *NOTE:* In a distributed cluster, percolation during the index operation is p
 
 h1. Distributed
 
-p. The index operation is directed to the primary shard based on it's route (see the Routing section above) and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas.
+p. The index operation is directed to the primary shard based on its route (see the Routing section above) and performed on the actual node containing this shard. After the primary shard completes the operation, if needed, the update is distributed to applicable replicas.
 
 h1. Write Consistency
 
