@@ -108,6 +108,7 @@ h2. Site Plugins
 
 * "BigDesk Plugin":https://github.com/lukas-vlcek/bigdesk (by Lukáš Vlček)
 * "Elasticsearch Head Plugin":https://github.com/mobz/elasticsearch-head (by Ben Birch)
+* "ElasticSearch HQ":https://github.com/royrusso/elasticsearch-HQ (by Roy Russo)
 * "Paramedic Plugin":https://github.com/karmi/elasticsearch-paramedic (by Karel Minařík)
 * "SegmentSpy Plugin":https://github.com/polyfractal/elasticsearch-segmentspy (by Zachary Tong)
 * "Inquisitor Plugin":https://github.com/polyfractal/elasticsearch-inquisitor (by Zachary Tong)
