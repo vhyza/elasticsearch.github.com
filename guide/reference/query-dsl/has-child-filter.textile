@@ -25,6 +25,7 @@ p. The @type@ is the child type to query against. The parent type to return is a
 p. The way that the filter is implemented is by first running the child query, doing the matching up to the parent doc for each document matched.
 
 p. The @has_child@ filter also accepts a filter instead of a query:
+
 <pre class="prettyprint lang-js">
 {
     "has_child" : {
