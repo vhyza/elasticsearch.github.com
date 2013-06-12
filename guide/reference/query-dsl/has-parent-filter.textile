@@ -27,18 +27,15 @@ The @parent_type@ field name can also be abbreviated to @type@.
 
 p. The way that the filter is implemented is by first running the parent query, doing the matching up to the child doc for each document matched.
 
-h1. Scope
-
-p. A @_scope@ can be defined on the filter allowing to run facets on the same scope name that will work against the parent documents. For example:
+p. The @has_parent@ filter also accepts a filter instead of a query:
 
 <pre class="prettyprint lang-js">
 {
     "has_parent" : {
-        "_scope" : "my_scope",
-        "parent_type" : "blog",
-        "query" : {
+        "type" : "blog",
+        "filter" : {
             "term" : {
-                "tag" : "something"
+                "text" : "bonsai three"
             }
         }
     }
