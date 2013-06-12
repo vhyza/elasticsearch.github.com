@@ -42,6 +42,8 @@ The @has_child@ also has scoring support from version @0.20.2@. The supported sc
 
 h2. Scope
 
+p. The @_scope@ support has been removed from version @0.90.beta1@.
+
 p. A @_scope@ can be defined on the filter allowing to run facets on the same scope name that will work against the child documents. For example:
 
 <pre class="prettyprint lang-js">
