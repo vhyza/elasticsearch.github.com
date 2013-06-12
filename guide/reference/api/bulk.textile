@@ -101,5 +101,5 @@ p. The @update@ action payload, supports the following options: @doc@ (partial d
 { "update" : {"_id" : "1", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
 { "doc" : {"field" : "value"} }
 { "update" : { "_id" : "0", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
-{ "script" : "counter += param1", "lang" : "js", "params" : {"param1" : 1}, "upsert" : {"counter" : 1}}
+{ "script" : "ctx._source.counter += param1", "lang" : "js", "params" : {"param1" : 1}, "upsert" : {"counter" : 1}}
 </pre>
