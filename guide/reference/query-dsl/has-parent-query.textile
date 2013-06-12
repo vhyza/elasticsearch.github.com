@@ -40,6 +40,8 @@ The @has_parent@ also has scoring support from version @0.20.2@. The supported s
 
 h2. Scope
 
+p. The @_scope@ support has been removed from version @0.90.beta1@. See: https://github.com/elasticsearch/elasticsearch/issues/2606
+
 p. A @_scope@ can be defined on the filter allowing to run facets on the same scope name that will work against the parent documents. For example:
 
 <pre class="prettyprint lang-js">
