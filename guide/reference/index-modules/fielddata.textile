@@ -94,3 +94,8 @@ h2. Settings before v0.90
 |@index.cache.field.type@|The default type for the field data cache is @resident@ (because of the cost of rebuilding it). Other types include @soft@|
 |@index.cache.field.max_size@|The max size (count, not byte size) of the cache (per search segment in a shard). Defaults to not set (@-1@).|
 |@index.cache.field.expire@|A time based setting that expires filters after a certain time of inactivity. Defaults to @-1@. For example, can be set to @5m@ for a 5 minute expiry.|
+
+h2. Monitoring field data
+
+You can monitor memory usage for field data using "Nodes Stats API":/guide/reference/api/admin-cluster-nodes-stats/
+
