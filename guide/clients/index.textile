@@ -17,6 +17,7 @@ h3. Python
 * "ESClient":https://github.com/eriky/ESClient: A lightweight and easy to use Python client for ElasticSearch.
 * "rawes":https://github.com/humangeo/rawes: Python low level client.
 * "elasticutils":https://github.com/mozilla/elasticutils/: A friendly chainable ElasticSearch interface for Python.
+* "Surfiki Refine":http://intridea.github.io/surfiki-refine-elasticsearch/: Python Map-Reduce engine targeting Elasticsearch indices.
 
 h3. Ruby
 
