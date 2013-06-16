@@ -84,7 +84,7 @@ h2. River Plugins
 * "LDAP River Plugin":https://github.com/tlrx/elasticsearch-river-ldap (by Tanguy Leroux)
 * "MongoDB River Plugin":https://github.com/richardwilly98/elasticsearch-river-mongodb/ (by Richard Louapre)
 * "Open Archives Initiative (OAI) River Plugin":https://github.com/jprante/elasticsearch-river-oai/ (by Jörg Prante)
-* "Redis River Plugin":https://github.com/sksamuel/elasticsearch-river-redis (by Steve Sarandos)
+* "Redis River Plugin":https://github.com/sksamuel/elasticsearch-river-redis (by Steve Samuel)
 * "RSS River Plugin":http://dadoonet.github.com/rssriver/ (by David Pilato)
 * "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts)
 * "Solr River Plugin":https://github.com/javanna/elasticsearch-river-solr/ (by Luca Cavanna)
