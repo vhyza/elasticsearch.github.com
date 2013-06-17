@@ -59,6 +59,7 @@ h3. Clojure
 h3. Go
 
 * "elastigo":https://github.com/mattbaird/elastigo: Go client.
+* "goes":https://github.com/belogik/goes: Go lib.
 
 h3. Erlang
 
