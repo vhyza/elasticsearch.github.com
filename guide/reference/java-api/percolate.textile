@@ -15,8 +15,11 @@ QueryBuilder qb = termQuery("content", "amazing");
 
 //Index the query = register it in the percolator
 client.prepareIndex("_percolator", "myIndexName", "myDesignatedQueryName")
-    .setSource(qb.buildAsBytes())
-    .setRefresh(true) //Needed when the query shall be available immediately
+    .setSource(jsonBuilder()
+    	.startObject()
+            .field("query", qb) // Register the query
+        .endObject())
+    .setRefresh(true) // Needed when the query shall be available immediately
     .execute().actionGet();
 </pre>
 
