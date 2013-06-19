@@ -90,6 +90,7 @@ h2. River Plugins
 * "Sofa River Plugin":https://github.com/adamlofts/elasticsearch-river-sofa (by adamlofts)
 * "Solr River Plugin":https://github.com/javanna/elasticsearch-river-solr/ (by Luca Cavanna)
 * "St9 River Plugin":https://github.com/sunnygleason/elasticsearch-river-st9 (by Sunny Gleason)
+* "Kafka River Plugin":https://github.com/endgameinc/elasticsearch-river-kafka (by Endgame Inc.)
 
 h2. Transport Plugins
 
@@ -127,3 +128,4 @@ h2. Misc Plugins
 * "ElasticSearch Changes Plugin":https://github.com/derryx/elasticsearch-changes-plugin (by Thomas Peuss)
 * "ElasticSearch View Plugin":http://tlrx.github.com/elasticsearch-view-plugin (by Tanguy Leroux)
 * "ElasticSearch New Relic Plugin":https://github.com/viniciusccarvalho/elasticsearch-newrelic (by Vinicius Carvalho)
+* "Terms Component Plugin":https://github.com/endgameinc/elasticsearch-term-plugin (by Endgame Inc.)
