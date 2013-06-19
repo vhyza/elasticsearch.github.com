@@ -64,7 +64,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all (as an individual field; it may still be included in @_all@). Defaults to @analyzed@.|
+|@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all (as an individual field; it may still be included in @_all@). Setting to @no@ disables @include_in_all@. Defaults to @analyzed@.|
 |@term_vector@|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
@@ -74,7 +74,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
 |@index_analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
 |@search_analyzer@|The analyzer used to analyze the field when part of a query string. Can be updated on an existing field.|
-|@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@include_in_all@|Should the field be included in the @_all@ field (if enabled). If @index@ is set to @no@ this defaults to @false@, otherwise, defaults to @true@ or to the parent @object@ type setting.|
 |@ignore_above@|Set to a size where above the mentioned size the string will be ignored. Handly for generic @not_analyzed@ fields that should ignore long text. (since @0.19.9).|
 |@position_offset_gap@|Position increment gap between field instances with the same field name. Defaults to 0.|
 
@@ -114,11 +114,11 @@ p. The following table lists all the attributes that can be used with a numbered
 |@type@|The type of the number. Can be @float@, @double@, @integer@, @long@, @short@, @byte@. Required.|
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
+|@index@|Set to @no@ if the value should not be indexed. Setting to @no@ disables @include_in_all@. If set to @no@ the field can be stored in @_source@, have @include_in_all@ enabled, or @store@ should be set to @yes@ for this to be useful.|
 |@precision_step@|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
-|@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@include_in_all@|Should the field be included in the @_all@ field (if enabled). If @index@ is set to @no@ this defaults to @false@, otherwise, defaults to @true@ or to the parent @object@ type setting.|
 |@ignore_malformed@|Ignored a malformed number. Defaults to @false@. (Since @0.19.9).|
 
 h1. Date
@@ -146,11 +146,11 @@ p. The following table lists all the attributes that can be used with a date typ
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@format@|The "date format":/guide/reference/mapping/date-format.html. Defaults to @dateOptionalTime@.|
 |@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
+|@index@|Set to @no@ if the value should not be indexed. Setting to @no@ disables @include_in_all@. If set to @no@ the field can be stored in @_source@, have @include_in_all@ enabled, or @store@ should be set to @yes@ for this to be useful.|
 |@precision_step@|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
-|@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@include_in_all@|Should the field be included in the @_all@ field (if enabled). If @index@ is set to @no@ this defaults to @false@, otherwise, defaults to @true@ or to the parent @object@ type setting.|
 |@ignore_malformed@|Ignored a malformed number. Defaults to @false@. (Since @0.19.9).|
 
 h1. Boolean
@@ -176,10 +176,10 @@ p. The following table lists all the attributes that can be used with the boolea
 |_. Attribute |_. Description |
 |@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |@store@|Set to @yes@ to store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
-|@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if it's not indexed and not stored, there is nothing to do with it.|
+|@index@|Set to @no@ if the value should not be indexed. Setting to @no@ disables @include_in_all@. If set to @no@ the field can be stored in @_source@, have @include_in_all@ enabled, or @store@ should be set to @yes@ for this to be useful.|
 |@boost@|The boost value. Defaults to @1.0@.|
 |@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
-|@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
+|@include_in_all@|Should the field be included in the @_all@ field (if enabled). If @index@ is set to @no@ this defaults to @false@, otherwise, defaults to @true@ or to the parent @object@ type setting.|
 
 h1. Binary
 
