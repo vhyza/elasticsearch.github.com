@@ -5,6 +5,10 @@ cat: guide
 sidebar: reference_modules
 ---
 
+h1. REMOVED AS OF v0.90
+
+p. Use the stats APIs instead.
+
 p. The JMX module exposes node information through "JMX":http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/. JMX can be used by either "jconsole":http://en.wikipedia.org/wiki/JConsole or "VisualVM":http://en.wikipedia.org/wiki/VisualVM.
 
 p. Exposed JMX data include both node level information, as well as instantiated index and shard on specific node. This is a work in progress with each version exposing more information.
