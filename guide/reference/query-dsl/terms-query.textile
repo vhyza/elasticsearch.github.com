@@ -11,7 +11,7 @@ p. A query that match on any (configurable) of the provided terms. This is a sim
 {
     "terms" : {
         "tags" : [ "blue", "pill" ],
-        "minimum_match" : 1
+        "minimum_should_match" : 1
     }
 }
 </pre>

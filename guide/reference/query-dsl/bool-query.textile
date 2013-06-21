@@ -9,7 +9,7 @@ p. A query that matches documents matching boolean combinations of other queries
 
 |_. Occur |_. Description |
 | @must@ | The clause (query) must appear in matching documents. |
-| @should@ | The clause (query) should appear in the matching document. A boolean query with no @must@ clauses, one or more @should@ clauses must match a document. The minimum number of should clauses to match can be set using @minimum_number_should_match@ parameter. |
+| @should@ | The clause (query) should appear in the matching document. A boolean query with no @must@ clauses, one or more @should@ clauses must match a document. The minimum number of should clauses to match can be set using @minimum_should_match@ parameter ("syntax":/guide/reference/query-dsl/minimum-should-match.html). |
 | @must_not@ | The clause (query) must not appear in the matching documents. |
 
 p. The bool query also supports @disable_coord@ parameter (defaults to @false@). Basically the coord similarity computes a score factor based on the fraction of all query terms that a document contains. See Lucene @BooleanQuery@ for more details.
@@ -33,7 +33,7 @@ p. The bool query also supports @disable_coord@ parameter (defaults to @false@).
                 "term" : { "tag" : "elasticsearch" }
             }
         ],
-        "minimum_number_should_match" : 1,
+        "minimum_should_match" : 1,
         "boost" : 1.0
     }
 }

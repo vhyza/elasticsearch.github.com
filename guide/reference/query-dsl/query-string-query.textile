@@ -33,8 +33,8 @@ p. The @query_string@ top level parameters include:
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
 | @analyze_wildcard@ | By default, wildcards terms in a query string are not analyzed. By setting this value to @true@, a best effort will be made to analyze those as well. |
 | @auto_generate_phrase_queries@ | Default to @false@. |
-| @minimum_should_match@ | A percent value (for example @20%@) controlling how many "should" clauses in the resulting boolean query should match.|
-|@lenient@|If set to @true@ will cause format based failures (like providing text to a numeric field) to be ignored. (since 0.19.4).|
+| @minimum_should_match@ | A value controlling how many "should" clauses in the resulting boolean query should match. It can be an absolute value (@2@), a percent value (@30%@) or "combinations of both":/guide/reference/query-dsl/minimum-should-match.html. |
+| @lenient@ |If set to @true@ will cause format based failures (like providing text to a numeric field) to be ignored. (since 0.19.4). |
 
 p. When a multi term query is being generated, one can control how it gets rewritten using the "rewrite":/guide/reference/query-dsl/multi-term-rewrite.html parameter.
 

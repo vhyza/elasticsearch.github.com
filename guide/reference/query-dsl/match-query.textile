@@ -21,7 +21,7 @@ h2. Types of Match Queries
 
 h3. boolean
 
-p. The default @match@ query is of type @boolean@. It means that the text provided is analyzed and the analysis process constructs a boolean query from the provided text. The @operator@ flag can be set to @or@ or @and@ to control the boolean clauses (defaults to @or@).
+p. The default @match@ query is of type @boolean@. It means that the text provided is analyzed and the analysis process constructs a boolean query from the provided text. The @operator@ flag can be set to @or@ or @and@ to control the boolean clauses (defaults to @or@). The minimum number of should clauses to match can be set using @minimum_should_match@ parameter ("syntax":/guide/reference/query-dsl/minimum-should-match.html). 
 
 p. The @analyzer@ can be set to control which analyzer will perform the analysis process on the text. It default to the field explicit mapping definition, or the default search analyzer.
 
