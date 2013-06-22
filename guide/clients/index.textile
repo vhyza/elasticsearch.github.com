@@ -40,6 +40,8 @@ h3. Java
 h3. Javascript
 
 * "Elastic.js":https://github.com/fullscale/elastic.js: A JavaScript implementation of the ElasticSearch Query DSL and Core API.
+* "node-elasticsearch-client":https://github.com/phillro/node-elasticsearch-client: A NodeJS client for elastic search.
+
 
 h3. .Net
 
