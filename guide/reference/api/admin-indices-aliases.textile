@@ -29,7 +29,7 @@ curl -XPOST 'http://localhost:9200/_aliases' -d '
 }'
 </pre>
 
-p. Renaming an alias is a simple @remove@ then @add@ operation within the same API:
+p. Renaming an alias is a simple @remove@ then @add@ operation within the same API. This operation is atomic, no need to worry about a short period of time where the alias does not point to an index:
 
 <pre class="prettyprint">
 curl -XPOST 'http://localhost:9200/_aliases' -d '
