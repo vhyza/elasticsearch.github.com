@@ -13,13 +13,15 @@ h2. Installing plugins
 
 p. Installing plugins can either be done manually by placing them under the @plugins@ directory, or using the @plugin@ script. Several plugins can be found under the "elasticsearch":https://github.com/elasticsearch organization in GitHub, starting with @elasticsearch-@.
 
-p. Installing plugins typically take the form of @plugin --install <org>/<user/component>/<version>@. The plugins will be automatically downloaded in this case from @download.elasticsearch.org@, and in case they don't exist there, from maven (central and sonatype).
+p. Starting from 0.90.2, installing plugins typically take the form of @plugin --install <org>/<user/component>/<version>@. The plugins will be automatically downloaded in this case from @download.elasticsearch.org@, and in case they don't exist there, from maven (central and sonatype).
 
 Note that when the plugin is located in maven central or sonatype repository, @<org>@ is the artifact @groupId@ and @<user/component>@ is the @artifactId@.
 
-p. A plugin can also be installed directly by specifying the URL for it, for example: @bin/plugin --url file://path/to/plugin --install plugin-name@.
+For prior version, the older form is @plugin -install <org>/<user/component>/<version>@
 
-p. For more information about plugins, you can run @bin/plugin -h@.
+p. A plugin can also be installed directly by specifying the URL for it, for example: @bin/plugin --url file://path/to/plugin --install plugin-name@ or @bin/plugin -url file://path/to/plugin -install plugin-name@ for older version.
+
+p. Starting from 0.90.2, for more information about plugins, you can run @bin/plugin -h@.
 
 h2. Site Plugins
 
@@ -30,8 +32,13 @@ p. Installed plugins that do not contain any java related content, will automati
 p. The ability to install plugins from Github allows to easily install site plugins hosted there by downloading the actual repo, for example, running:
 
 <pre class="prettyprint">
+# From 0.90.2
 bin/plugin --install mobz/elasticsearch-head
 bin/plugin --install lukas-vlcek/bigdesk
+
+# From a prior version
+bin/plugin -install mobz/elasticsearch-head
+bin/plugin -install lukas-vlcek/bigdesk
 </pre>
 
 p. Will install both of those site plugins, with @elasticsearch-head@ available under @http://localhost:9200/_plugin/head/@ and @bigdesk@ available under @http://localhost:9200/_plugin/bigdesk/@.
