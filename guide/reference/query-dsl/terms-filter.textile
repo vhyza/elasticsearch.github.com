@@ -67,6 +67,8 @@ p. The terms lookup mechanism supports the following options:
 * @type@: The type to fetch the term values from.
 * @id@: The id of the document to fetch the term values from.
 * @path@: The field specified as path to fetch the actual values for the @terms@ filter.
+* @routing@: A custom routing value to be used when retrieving the external terms doc.
+* @cache@: Whether to cache the filter built from the retrieved document (@true@ - default) or whether to fetch and rebuild the filter on every request (@false@).  See "Terms lookup caching" below
 
 p. The values for the @terms@ filter will be fetched from a field in a document with the specified id in the specified type and index. Internally a get request is executed to fetch the values from the specified path. At the moment for this feature to work the @_source@ needs to be stored.
 
