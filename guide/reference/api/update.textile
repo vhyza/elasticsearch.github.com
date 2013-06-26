@@ -90,7 +90,7 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
 
 p. If both @doc@ and @script@ is specified, then @doc@ is ignored. Best is to put your field pairs of the partial document in the script itself.
 
-p. Last, it also supports @upsert@ (since 0.20).  If the document does not already exists, the content of the @upsert@ element will be used to index the fresh doc:
+p. There is also support for @upsert@ (since 0.20).  If the document does not already exists, the content of the @upsert@ element will be used to index the fresh doc:
 
 <pre class="prettyprint">
 curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
@@ -101,6 +101,17 @@ curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
     "upsert" : {
         "counter" : 1
     }
+}'
+</pre>
+
+p. Last it also supports @doc_as_upsert@ (since 0.90.2). So that the provided document will be inserted if the document does not already exist. This will reduce the amount of data that needs to be sent to elasticsearch.
+
+<pre class="prettyprint">
+curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
+    "doc" : {
+        "name" : "new_name"
+    },
+    "doc_as_upsert" : true
 }'
 </pre>
 
