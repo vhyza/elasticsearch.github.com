@@ -6,6 +6,7 @@ sidebar: reference_query_dsl
 ---
 
 p. A geohash is a hierarchical datastructure which allows a division of a spatial geometry. Each geohash defines a cell on the earths surface and the longer the geohash the smaller cell. Also the size of a cell can be seen as precision. The geohash filter provides an access to this datastructure by defining a cell and match only points that lie within this cell.
+
 p. To get this filter work all prefixes of a geohash need to be indexed. In example a geohash @u30@ needs to be decomposed into three terms: @u30@, @u3@ and @u@. This decomposition must be enabled in the mapping of the @geo_point@ field that's going to be filtered by setting the @geohash_prefix@ option:
 
 <pre class="prettyprint lang-js">
