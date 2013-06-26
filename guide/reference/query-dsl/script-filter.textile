@@ -7,7 +7,7 @@ sidebar: reference_query_dsl
 
 p. A filter allowing to define "scripts":/guide/reference/modules/scripting.html as filters. For example:
 
-<pre class="prettyprint lang-js">
+<pre class="prettyprint lang-js noescape">
 "filtered" : {
     "query" : {
         ...
@@ -24,7 +24,7 @@ h1. Custom Parameters
 
 p. Scripts are compiled and cached for faster execution. If the same script can be used, just with different parameters provider, it is preferable to use the ability to pass parameters to the script itself, for example:
 
-<pre class="prettyprint lang-js">
+<pre class="prettyprint lang-js noescape">
 "filtered" : {
     "query" : {
         ...
