@@ -23,7 +23,7 @@ p. First it searches for documents which match the more important terms. These a
 
 p. Then, it executes a second query for the less important terms -- terms which appear frequently and have a low impact on relevance. But instead of calculating the relevance score for *all* matching documents, it only calculates the @_score@ for documents already matched by the first query.  In this way the high frequency terms can improve the relevance calculation without paying the cost of poor performance.
 
-p. If a query consists only of high frequency terms, then a single query is executed as an @AND@ (conjunction) query, in other words all terms are required. Even though each individual term will match many documents, the combination of terms narrows down the resultset to only the most relevant.
+p. If a query consists only of high frequency terms, then a single query is executed as an @AND@ (conjunction) query, in other words all terms are required. Even though each individual term will match many documents, the combination of terms narrows down the resultset to only the most relevant. The single query can also be executed as an @OR@ with a specific "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html, in this case a high enough value should probably be used.
 
 p. Terms are allocated to the high or low frequency groups based on the @cutoff_frequency@, which can be specified as an absolute frequency (@>=1@) or as a relative frequency (@0.0 .. 1.0@). 
 
@@ -31,7 +31,7 @@ p. Perhaps the most interesting property of this query is that it adapts to doma
 
 h2. Examples
 
-In this example, words that have a document frequency greater than 0.1% (eg @"this"@ and @"is"@) will be treated as _common terms_.
+p. In this example, words that have a document frequency greater than 0.1% (eg @"this"@ and @"is"@) will be treated as _common terms_.
 
 <pre class="prettyprint lang-js">
 {
@@ -44,10 +44,9 @@ In this example, words that have a document frequency greater than 0.1% (eg @"th
 }
 </pre>
 
-The number of terms which should match can be controlled with the "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html, @low_freq_operator@ (default @"or"@) and @high_freq_operator@ (default @"or"@) parameters. 
+p. The number of terms which should match can be controlled with the "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html (@high_freq@, @low_freq@), @low_freq_operator@ (default @"or"@) and @high_freq_operator@ (default @"or"@) parameters. 
 
-
-For low frequency terms, set the @low_freq_operator@ to @"and"@ to make all terms required: 
+p. For low frequency terms, set the @low_freq_operator@ to @"and"@ to make all terms required: 
 
 <pre class="prettyprint lang-js">
 {
@@ -61,7 +60,7 @@ For low frequency terms, set the @low_freq_operator@ to @"and"@ to make all term
 }
 </pre>
 
-which is roughly equivalent to:
+p. which is roughly equivalent to:
 
 <pre class="prettyprint lang-js">
 {
@@ -80,7 +79,7 @@ which is roughly equivalent to:
 }
 </pre>
 
-Alternatively use @minimum_should_match@ to specify a minimum number or percentage of low frequency terms which must be present, for instance:
+p. Alternatively use "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html to specify a minimum number or percentage of low frequency terms which must be present, for instance:
 
 <pre class="prettyprint lang-js">
 {
@@ -94,7 +93,7 @@ Alternatively use @minimum_should_match@ to specify a minimum number or percenta
 }
 </pre>
 
-which is roughly equivalent to:
+p. which is roughly equivalent to:
 
 <pre class="prettyprint lang-js">
 {
@@ -118,4 +117,89 @@ which is roughly equivalent to:
 }
 </pre>
 
-The @common@ terms query also supports @boost@, @analyzer@ and @disable_coord@ as parameters.
+h4. minimum_should_match 
+
+p. A different "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html can be applied for low and high frequency terms with the additional @low_freq@ and @high_freq@ parameters Here is an example when providing additional parameters (note the change in structure):
+
+<pre class="prettyprint lang-js">
+{
+  "common": {
+    "body": {
+      "query":                "nelly the elephant not as a cartoon",
+      "cutoff_frequency":     0.001,
+      "minimum_should_match": {
+          "low_freq" : 2,
+          "high_freq" : 3
+       }
+    }
+  }
+}
+</pre>
+
+p. which is roughly equivalent to:
+
+<pre class="prettyprint lang-js">
+{
+  "bool": {
+    "must": {
+      "bool": {
+        "should": [
+          { "term": { "body": "nelly"}},
+          { "term": { "body": "elephant"}},
+          { "term": { "body": "cartoon"}}
+        ],
+        "minimum_should_match": 2
+      }
+    },
+    "should": {
+      "bool": {
+        "should": [
+          { "term": { "body": "the"}},
+          { "term": { "body": "not"}},
+          { "term": { "body": "as"}},
+          { "term": { "body": "a"}}
+        ],
+        "minimum_should_match": 3
+      }
+    }
+  }
+}
+</pre>
+
+p. In this case it means the high frequency terms have only an impact on relevance when there are at least three of them.  But the most interesting use of the "@minimum_should_match@":/guide/reference/query-dsl/minimum-should-match.html for high frequency terms is when there are only high frequency terms:
+
+<pre class="prettyprint lang-js">
+{
+  "common": {
+    "body": {
+      "query":                "how not to be",
+      "cutoff_frequency":     0.001,
+      "minimum_should_match": {
+          "low_freq" : 2,
+          "high_freq" : 3
+       }
+    }
+  }
+}
+</pre>
+
+p. which is roughly equivalent to:
+
+<pre class="prettyprint lang-js">
+{
+  "bool": {
+    "should": [
+      { "term": { "body": "how"}},
+      { "term": { "body": "not"}},
+      { "term": { "body": "to"}},
+      { "term": { "body": "be"}}
+    ],
+    "minimum_should_match": "3<50%"
+  }
+}
+</pre>
+
+p. The high frequency generated query is then slightly less restrictive than with an @AND@.
+
+p. The @common@ terms query also supports @boost@, @analyzer@ and @disable_coord@ as parameters.
+
