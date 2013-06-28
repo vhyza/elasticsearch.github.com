@@ -82,7 +82,7 @@ h2. River Plugins
 * "Twitter River Plugin":https://github.com/elasticsearch/elasticsearch-river-twitter (by elasticsearch team)
 * "RabbitMQ River Plugin":https://github.com/elasticsearch/elasticsearch-river-rabbitmq (by elasticsearch team)
 * "ActiveMQ River Plugin":https://github.com/domdorn/elasticsearch-river-activemq/ (by Dominik Dorn)
-* "Amazon SQS River Plugin":https://github.com/aleski/elasticsearch-river-amazonsqs (by Alex B)
+* "Amazon SQS River Plugin":https://github.com/albogdano/elasticsearch-river-amazonsqs (by Alex Bogdanovski)
 * "CSV River Plugin":https://github.com/xxBedy/elasticsearch-river-csv (by Martin Bednar)
 * "Dropbox River Plugin":http://www.pilato.fr/dropbox/ (by David Pilato)
 * "FileSystem River Plugin":http://www.pilato.fr/fsriver/ (by David Pilato)
