@@ -65,7 +65,8 @@ h3. Go
 
 h3. Erlang
 
-* "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client.
+* "erlastic_search":http://github.com/tsloughter/erlastic_search: Erlang client using HTTP.
+* "erlasticsearch":https://github.com/dieswaytoofast/erlasticsearch: Erlang client using Thrift.
 * "Tirexs":https://github.com/datahogs/tirexs: An "Elixir":https://github.com/elixir-lang/elixir based API/DSL, inspired by "Tire":http://github.com/karmi/tire. Ready to use in pure Erlang environment.
 
 h3. EventMachine
