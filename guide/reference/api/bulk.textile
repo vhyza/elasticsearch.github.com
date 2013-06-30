@@ -95,11 +95,13 @@ h1. Update
 
 p. When using @update@ action @_retry_on_conflict@ can be used as field in the action itself (not in the extra payload line), to specify how many times an update should be retried in the case of a version conflict.
 
-p. The @update@ action payload, supports the following options: @doc@ (partial document), @upsert@, @script@, @params@ (for script), @lang@ (for script). See update documentation for details on the options. Culr example with update actions:
+p. The @update@ action payload, supports the following options: @doc@ (partial document), @upsert@, @doc_as_upsert@, @script@, @params@ (for script), @lang@ (for script). See update documentation for details on the options. Curl example with update actions:
 
 <pre class="prettyprint">
 { "update" : {"_id" : "1", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
 { "doc" : {"field" : "value"} }
 { "update" : { "_id" : "0", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
 { "script" : "ctx._source.counter += param1", "lang" : "js", "params" : {"param1" : 1}, "upsert" : {"counter" : 1}}
+{ "update" : {"_id" : "2", "_type" : "type1", "_index" : "index1", "_retry_on_conflict" : 3} }
+{ "doc" : {"field" : "value"}, "doc_as_upsert" : true }
 </pre>
