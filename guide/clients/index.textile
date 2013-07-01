@@ -51,8 +51,9 @@ h3. .Net
 
 h3. Scala
 
-* "scalastic":https://github.com/bsadeh/scalastic: Scala client.
+* "elastic4s":https://github.com/sksamuel/elastic4s: Scala DSL.
 * "esclient":https://github.com/scalastuff/esclient: Thin Scala client.
+* "scalastic":https://github.com/bsadeh/scalastic: Scala client.
 
 h3. Clojure
 
