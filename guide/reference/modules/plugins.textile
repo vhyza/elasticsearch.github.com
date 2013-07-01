@@ -74,6 +74,7 @@ h2. Analysis Plugins
 * "Russian and English Morphological Analysis Plugin":https://github.com/imotov/elasticsearch-analysis-morphology (by Igor Motov)
 * "Pinyin Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-pinyin (by Medcl)
 * "String2Integer Analysis Plugin":https://github.com/medcl/elasticsearch-analysis-string2int (by Medcl)
+* "Annotation Analysis Plugin":https://github.com/barminator/elasticsearch-analysis-annotation (by Michal Samek)
 
 h2. River Plugins
 
