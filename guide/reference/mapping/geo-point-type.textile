@@ -83,6 +83,12 @@ h1. Mapping Options
 |@lat_lon@|Set to @true@ to also index the @.lat@ and @.lon@ as fields. Defaults to @false@.|
 |@geohash@|Set to @true@ to also index the @.geohash@ as a field. Defaults to @false@.|
 |@geohash_precision@|Sets the geohash precision, defaults to 12.|
+|@validate@|Set to @true@ to reject geo points with invalid latitude or longitude (default is @false@) **Note**: Validation only works when normalization has been disabled.|
+|@validate_lat@|Set to @true@ to reject geo points with an invalid latitude|
+|@validate_lon@|Set to @true@ to reject geo points with an invalid longitude|
+|@normalize@|Set to @true@ to normalize latitude and longitude (default is @true@)|
+|@normalize_lat@|Set to @true@ to normalize latitude|
+|@normalize_lon@|Set to @true@ to normalize longitude|
 
 h1. Usage in Scripts
 
