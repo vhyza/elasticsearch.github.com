@@ -51,7 +51,7 @@ p. If the analyzer used removes all tokens in a query like a @stop@ filter does,
         "message" : {
             "query" : "to be or not to be",
             "operator" : "and",
-            "zero_terms_query: "all"
+            "zero_terms_query": "all"
         }
     }
 }
