@@ -40,7 +40,7 @@ p. Here is an example when providing additional parameters (note the slight chan
 }
 </pre>
 
-h4. zero_term_query
+h4. zero_terms_query
 
 p. If the analyzer used removes all tokens in a query like a @stop@ filter does, the default behavior is to match no documents at all. In order to change that the @zero_terms_query@ option can be used, which accepts @none@ (default) and @all@ which corresponds to a @match_all@ query.
 
@@ -51,7 +51,7 @@ p. If the analyzer used removes all tokens in a query like a @stop@ filter does,
         "message" : {
             "query" : "to be or not to be",
             "operator" : "and"
-            "zero_term_query: "all"
+            "zero_terms_query: "all"
         }
     }
 }
