@@ -124,6 +124,7 @@ h2. Site Plugins
 * "Paramedic Plugin":https://github.com/karmi/elasticsearch-paramedic (by Karel Minařík)
 * "SegmentSpy Plugin":https://github.com/polyfractal/elasticsearch-segmentspy (by Zachary Tong)
 * "Inquisitor Plugin":https://github.com/polyfractal/elasticsearch-inquisitor (by Zachary Tong)
+* "Hammer Plugin":https://github.com/andrewvc/elastic-hammer (by Andrew Cholakian)
 
 h2. Misc Plugins
 
