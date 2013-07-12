@@ -22,7 +22,7 @@ p. JSON documents are hierarchical in nature, allowing them to define inner "obj
 }
 </pre>
 
-p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with a @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, although it is a special "root object type":root-object-type.html which allows for additional mapping definitions.
+p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with a @sid@, and a @name@ object which has @first_name@ and @last_name@. It's important to note that @tweet@ is also an object, although it is a special "root object type":/guide/reference/mapping/root-object-type.html which allows for additional mapping definitions.
 
 p. The following is an example of explicit mapping for the above JSON:
 
@@ -89,7 +89,7 @@ p. There is no performance overhead if an @object@ is dynamic, the ability to tu
 
 p. If a dynamic object contains yet another inner @object@, it will be automatically added to the index and mapped as well.
 
-p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
+p. When processing dynamic new fields, their type is automatically derived. For example, if it is a @number@, it will automatically be treated as number "core_type":/guide/reference/mapping/core-types.html. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
 
 p. Date fields are special since they are represented as a @string@. Date fields are detected if they can be parsed as a date when they are first introduced into the system. The set of date formats that are tested against can be configured using the @date_formats@ and explained later.
 
