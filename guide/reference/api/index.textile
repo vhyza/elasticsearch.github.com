@@ -30,7 +30,7 @@ h1. Multiple Indices
 
 p. Many APIs support execution across multiple indices, using simple @test1,test2,test3@ notation (or @_all@ for all indices). It also support wildcards, for example: @test*@, and the ability to "add" (@+@) and "remove" (@-@), for example: @+test*,-test3@.
 
-p. All multi indices API support the @ignore_indices@ option. Setting it to @missing@ will cause indices that do not exists to be ignored from the execution. By default, when its not set, the request will fail. Note, this feature is available since 0.20 vesrion.
+p. All multi indices API support the @ignore_indices@ option. Setting it to @missing@ will cause indices that do not exists to be ignored from the execution. By default, when its not set, the request will fail. Note, this feature is available since 0.20 version.
 
 h1. Options
 
