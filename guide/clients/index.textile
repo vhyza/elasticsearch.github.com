@@ -111,6 +111,7 @@ h2. Integrations
 * "Haystack":http://haystacksearch.org/: Modular search for Django
 * "play2-elasticsearch":https://github.com/cleverage/play2-elasticsearch: ElasticSearch module for Play Framework 2.x
 * "dangle":https://github.com/fullscale/dangle: A set of AngularJS directives that provide common visualizations for elasticsearch based on D3.
+* "carrot2":https://github.com/carrot2/elasticsearch-carrot2: Results clustering with carrot2
 
 h2. Misc
 

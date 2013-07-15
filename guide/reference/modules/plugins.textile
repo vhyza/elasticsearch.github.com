@@ -139,3 +139,4 @@ h2. Misc Plugins
 * "ElasticSearch View Plugin":http://tlrx.github.com/elasticsearch-view-plugin (by Tanguy Leroux)
 * "ElasticSearch New Relic Plugin":https://github.com/viniciusccarvalho/elasticsearch-newrelic (by Vinicius Carvalho)
 * "Terms Component Plugin":https://github.com/endgameinc/elasticsearch-term-plugin (by Endgame Inc.)
+* "carrot2 Plugin":https://github.com/carrot2/elasticsearch-carrot2: Results clustering with carrot2 (by Dawid Weiss)
