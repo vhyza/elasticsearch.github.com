@@ -7,8 +7,6 @@ sidebar: reference_mapping
 
 p. Nested objects/documents allow to map certain sections in the document indexed as nested allowing to query them as if they are separate docs joining with the parent owning doc.
 
-p(note). This feature is experimental and might require reindexing the data if using it.
-
 p. One of the problems when indexing inner objects that occur several times in a doc is that "cross object" search match will occur, for example:
 
 <pre class="prettyprint lang-js">
@@ -41,6 +39,8 @@ p. Nested mapping allows mapping certain inner objects (usually multi instance o
     }
 }
 </pre>
+
+p(note). Changing an object type to nested type requires reindexing.
 
 p. The above will cause all @obj1@ to be indexed as a nested doc. The mapping is similar in nature to setting @type@ to @object@, except that it's @nested@.
 
