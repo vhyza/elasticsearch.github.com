@@ -11,4 +11,14 @@ p. The Groovy API is a wrapper on top of the "Java API":/guide/reference/java-ap
 
 h2. Maven Repository
 
-p. elasticsearch is hosted on "Maven Central":http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22elasticsearch%22.
+p. The Groovy API is hosted on "Maven Central":http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22elasticsearch-client-groovy%22.
+
+p. For example, you can define the latest version in your @pom.xml@ file:
+
+<pre class="noescape prettyprint lang-xml">
+<dependency>
+    <groupId>org.elasticsearch</groupId>
+    <artifactId>elasticsearch-client-groovy</artifactId>
+    <version>${es.version}</version>
+</dependency>
+</pre>
