@@ -42,3 +42,7 @@ p. Will cause the following doc to be routed based on the @111222@ value:
 </pre>
 
 p. Note, using @path@ without explicit routing value provided required an additional (though quite fast) parsing phase.
+
+h1. id uniqueness
+
+p. When indexing documents specifying a custom @_routing@, the uniqueness of the @_id@ is not guaranteed throughout all the shards that the index is composed of. In fact, documents with the same @_id@ might end up in different shards if indexed with different @_routing@ values.
