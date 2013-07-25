@@ -48,6 +48,13 @@ One can use the hunspell stem filter by configuring it the analysis settings:
 }
 </pre>
 
+The hunspell token filter accepts four options:
+
+* @locale@ - A locale for this filter. If this is unset, the @lang@ or @language@ are used instead - so one of these has to be set. 
+* @dictionary@ - The name of a dictionary. The path to your hunspell dictionaries should be configured via @indices.analysis.hunspell.dictionary.location@ before.
+* @dedup@ - If only unique terms should be returned, this needs to be set to @true@. Defaults to @true@.
+* @recursionLevel@ (since 0.90.3) - Configures the recursion level a stemmer can go into. Defaults to @2@. Some languages (for example czech) give better results when set to @1@ or @0@, so you should test it out.
+
 _Note: As opposed to the snowball stemmers (which are algorithm based) this is a dictionary lookup based stemmer and therefore the quality of the stemming is determined by the quality of the dictionary._
 
 
