@@ -25,6 +25,8 @@ threadpool:
         wait_time: 30s
 </pre>
 
+Note that you can update threadpool settings live using "admin cluster update settings API":/guide/reference/api/admin-cluster-update-settings/.
+
 p. The following are the types of thread pools that can be used and their respective parameters:
 
 h2. cache
