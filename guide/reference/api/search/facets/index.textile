@@ -73,7 +73,7 @@ That's because the primary purpose of facets is to enable "_faceted navigation_"
 
 !/content/themes/elasticsearch-org/images/content/dashboards/linkedin-faceted-search.png(Faceted Search at LinkedIn)!
 
-Facets can be used, however, for other purposes: computing histograms, statistical aggregations, and more. See the article about "data visualization":/blog/2011/05/13/data-visualization-with-elasticsearch-and-protovis.html on the ElasticSearch's blog for inspiration.
+Facets can be used, however, for other purposes: computing histograms, statistical aggregations, and more. See the article about "data visualization":/blog/data-visualization-with-elasticsearch-and-protovis/ on the ElasticSearch's blog for inspiration.
 
 h2. Scope
 
