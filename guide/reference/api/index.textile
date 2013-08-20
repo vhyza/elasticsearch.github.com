@@ -36,7 +36,7 @@ h1. Options
 
 h2. Pretty Results
 
-p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!. Another option is to set @format=yaml@ which will cause the result to be returned in the (sometimes) more readable yaml format.
+p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!). Another option is to set @format=yaml@ which will cause the result to be returned in the (sometimes) more readable yaml format.
 
 h2. Parameters
 
