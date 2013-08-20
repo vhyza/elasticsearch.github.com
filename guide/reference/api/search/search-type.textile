@@ -27,6 +27,8 @@ p. Parameter value: *query_then_fetch*.
 
 p. The query is executed against all shards, but only enough information is returned (*not the document content*). The results are then sorted and ranked, and based on it, *only the relevant shards* are asked for the actual document content. The return number of hits is exactly as specified in @size@, since they are the only ones that are fetched. This is very handy when the index has a lot of shards (not replicas, shard id groups).
 
+p. @Note:@ This is the default setting, if you do not specify a search type in your query.
+
 h1. Dfs, Query And Fetch
 
 p. Parameter value: *dfs_query_and_fetch*.
