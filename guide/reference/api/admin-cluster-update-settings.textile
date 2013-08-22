@@ -56,10 +56,10 @@ h3. Awareness
 
 h3. Balanced Shards
 
-* @cluster.routing.allocation.balance.shard@: defines the weight factor for shards allocated on a node (float). Defaults to @1.0f@.
+* @cluster.routing.allocation.balance.shard@: defines the weight factor for shards allocated on a node (float). Defaults to @0.45f@.
 * @cluster.routing.allocation.balance.index@: defines a factor to the number of shards per index allocated on a specific node (float). Defaults to @0.5f@.
-* @cluster.routing.allocation.balance.primary@: defines a weight factor for the number of primaries of a specific index allocated on a node (float). @0.45f@.
-* @cluster.routing.allocation.balance.threshold@: minimal optimization value of operations that should be performed (non negative float). Defaults to @0.05f@.
+* @cluster.routing.allocation.balance.primary@: defines a weight factor for the number of primaries of a specific index allocated on a node (float). @0.05f@.
+* @cluster.routing.allocation.balance.threshold@: minimal optimization value of operations that should be performed (non negative float). Defaults to @1.0f@.
 
 h3. Concurrent Rebalance
 
