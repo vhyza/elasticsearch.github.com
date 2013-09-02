@@ -127,6 +127,8 @@ p. By default, the search request will fail if there is no mapping associated wi
 }
 </pre>
 
+p. Be careful when using this parameter with cross-indices search requests. You may encounter failures or unconsistent results if the unmapped fields are not the same on all indices which are being queried.
+
 
 h1. Geo Distance Sorting
 
